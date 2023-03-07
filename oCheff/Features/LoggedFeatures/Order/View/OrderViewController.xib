@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderViewController" customModule="oCheff" customModuleProvider="target">
+            <connections>
+                <outlet property="orderTV" destination="uVf-4y-Hk2" id="kdA-w9-H4m"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uVf-4y-Hk2">
+                    <rect key="frame" x="0.0" y="123" width="414" height="645"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iyg-em-Spo">
+                    <rect key="frame" x="24" y="788" width="366" height="50"/>
+                    <color key="backgroundColor" red="0.027450980390000001" green="0.043137254899999998" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="FvU-3k-1te"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Enviar para cozinha">
+                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
+                    </buttonConfiguration>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="sendOrder:" destination="-1" eventType="touchUpInside" id="fr8-L3-tZ1"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estes itens ainda não foram enviados para a cozinha" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDp-oY-Tje">
+                    <rect key="frame" x="24" y="64" width="366" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="qCv-eC-hXM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                    <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uVf-4y-Hk2" secondAttribute="trailing" id="1JH-iJ-KLp"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Iyg-em-Spo" secondAttribute="trailing" constant="24" id="ErS-s3-gyQ"/>
+                <constraint firstItem="uVf-4y-Hk2" firstAttribute="top" secondItem="IDp-oY-Tje" secondAttribute="bottom" constant="10" id="MKm-Fc-uMf"/>
+                <constraint firstItem="IDp-oY-Tje" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="RvX-LO-L2O"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Iyg-em-Spo" secondAttribute="bottom" constant="24" id="b84-Ql-OOV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IDp-oY-Tje" secondAttribute="trailing" constant="24" id="fby-g1-h1p"/>
+                <constraint firstItem="Iyg-em-Spo" firstAttribute="top" secondItem="uVf-4y-Hk2" secondAttribute="bottom" constant="20" id="mfG-Bg-I2Y"/>
+                <constraint firstItem="uVf-4y-Hk2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nGI-FW-iNC"/>
+                <constraint firstItem="IDp-oY-Tje" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="ui6-HV-LkU"/>
+                <constraint firstItem="Iyg-em-Spo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="xTK-uA-BcX"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="136.60714285714286"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
