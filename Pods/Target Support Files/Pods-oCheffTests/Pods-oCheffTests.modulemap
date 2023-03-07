@@ -1,0 +1,6 @@
+framework module Pods_oCheffTests {
+  umbrella header "Pods-oCheffTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
