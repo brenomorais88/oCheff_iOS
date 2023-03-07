@@ -2,7 +2,7 @@
 //  EstablishmentsViewController.swift
 //  oCheff
 //
-//  Created by Breno Carvalho Alves De Morais (RARO SERVICOS DE INFORMATICA LTDA – 026 – SP) on 19/02/23.
+//  Created by Breno Carvalho Alves De Morais (Bit2B) on 19/02/23.
 //
 
 import UIKit
