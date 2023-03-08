@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 class ViewController: UIViewController {
+    let loadingVC = LoadingViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,9 +22,6 @@ class ViewController: UIViewController {
     func showCurrentTable(delegate: HomeCoordinatorProtocol) {
         let viewModel = CurrentTableViewModel(delegate: delegate)
         let vc = CurrentTableViewController(viewModel: viewModel)
-//        let nav = UINavigationController(rootViewController: vc)
-//        nav.modalPresentationStyle = .fullScreen
-//        self.present(nav, animated: true, completion: nil)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -43,5 +42,15 @@ class ViewController: UIViewController {
         vc.modalTransitionStyle = .crossDissolve
         self.present(vc, animated: true, completion: nil)
         
+    }
+    
+    func showLoading() {
+        loadingVC.modalPresentationStyle = .overFullScreen
+        loadingVC.modalTransitionStyle = .crossDissolve
+        self.present(loadingVC, animated: true, completion: nil)
+    }
+    
+    func dismissLoading() {
+        self.loadingVC.dismiss(animated: true)
     }
 }

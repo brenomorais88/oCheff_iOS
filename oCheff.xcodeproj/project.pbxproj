@@ -14,6 +14,8 @@
 		0FEEF73E29B8129D00071EBF /* LoginPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF73D29B8129D00071EBF /* LoginPhoneViewController.swift */; };
 		0FEEF74029B812A800071EBF /* LoginPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEEF73F29B812A800071EBF /* LoginPhoneViewController.xib */; };
 		0FEEF74229B81D6000071EBF /* UIButton+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF74129B81D6000071EBF /* UIButton+extension.swift */; };
+		0FEEF74629B8C42D00071EBF /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF74429B8C42D00071EBF /* LoadingViewController.swift */; };
+		0FEEF74729B8C42D00071EBF /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEEF74529B8C42D00071EBF /* LoadingViewController.xib */; };
 		203713B529A934C2003376A6 /* CurrentTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203713B429A934C2003376A6 /* CurrentTableViewModel.swift */; };
 		203713B829A934E8003376A6 /* CurrentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203713B629A934E8003376A6 /* CurrentTableViewController.swift */; };
 		203713B929A934E8003376A6 /* CurrentTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 203713B729A934E8003376A6 /* CurrentTableViewController.xib */; };
@@ -139,6 +141,8 @@
 		0FEEF73D29B8129D00071EBF /* LoginPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPhoneViewController.swift; sourceTree = "<group>"; };
 		0FEEF73F29B812A800071EBF /* LoginPhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginPhoneViewController.xib; sourceTree = "<group>"; };
 		0FEEF74129B81D6000071EBF /* UIButton+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+extension.swift"; sourceTree = "<group>"; };
+		0FEEF74429B8C42D00071EBF /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		0FEEF74529B8C42D00071EBF /* LoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
 		203713B429A934C2003376A6 /* CurrentTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTableViewModel.swift; sourceTree = "<group>"; };
 		203713B629A934E8003376A6 /* CurrentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTableViewController.swift; sourceTree = "<group>"; };
 		203713B729A934E8003376A6 /* CurrentTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentTableViewController.xib; sourceTree = "<group>"; };
@@ -283,6 +287,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FEEF74329B8C3F900071EBF /* ComonUI */ = {
+			isa = PBXGroup;
+			children = (
+				0FEEF74429B8C42D00071EBF /* LoadingViewController.swift */,
+				0FEEF74529B8C42D00071EBF /* LoadingViewController.xib */,
+			);
+			path = ComonUI;
+			sourceTree = "<group>";
+		};
 		203713B029A93497003376A6 /* CurrentTable */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,6 +495,7 @@
 		20529E7D29A01F04008112CE /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				0FEEF74329B8C3F900071EBF /* ComonUI */,
 				20529EA629A12C89008112CE /* Base */,
 				20529EA529A12C83008112CE /* Extensions */,
 			);
@@ -1156,6 +1170,7 @@
 				20529EE729A1685F008112CE /* HistoricCell.xib in Resources */,
 				203713FA29AAA06F003376A6 /* CloseAccountViewController.xib in Resources */,
 				203713C529A93F0C003376A6 /* CurrentTableItemCell.xib in Resources */,
+				0FEEF74729B8C42D00071EBF /* LoadingViewController.xib in Resources */,
 				20529EF929A2628B008112CE /* HistoricDetailHeaderCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1321,6 +1336,7 @@
 				203713B829A934E8003376A6 /* CurrentTableViewController.swift in Sources */,
 				20529EE029A16246008112CE /* HistoricViewModel.swift in Sources */,
 				20529EAD29A12EC5008112CE /* HomeViewController.swift in Sources */,
+				0FEEF74629B8C42D00071EBF /* LoadingViewController.swift in Sources */,
 				20529F0729A2927E008112CE /* EstablishmentsViewModel.swift in Sources */,
 				2052E2E029A3BD1900BFA7F0 /* NewTableViewModel.swift in Sources */,
 				20C694CF29970FB6006AE6FB /* AppDelegate.swift in Sources */,

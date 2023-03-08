@@ -89,14 +89,17 @@ class PhoneValidationViewController: ViewController {
     private func signIn(verificationCode: String) {
         guard let verificationID = UserDefaults.standard.string(forKey: "authVerificationID") else { return }
         
+        self.showLoading()
+        
         let credential = PhoneAuthProvider.provider().credential(
           withVerificationID: verificationID,
           verificationCode: verificationCode
         )
         
         Auth.auth().signIn(with: credential) { authResult, error in
+            self.dismissLoading()
+            
             if let error = error {
-                
               let authError = error as NSError
                 self.userLoginError(authError: authError)
               return

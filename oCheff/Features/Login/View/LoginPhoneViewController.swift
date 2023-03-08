@@ -46,6 +46,8 @@ class LoginPhoneViewController: ViewController {
             return
         }
         
+        self.showLoading()
+        
         let phone = text.clearPhoneString()
         Auth.auth().languageCode = "br"
         
@@ -53,6 +55,8 @@ class LoginPhoneViewController: ViewController {
         
         provider.verifyPhoneNumber("+55\(phone)",
                                    uiDelegate: nil) { verificationID, error in
+            
+            self.dismissLoading()
             
             if let error = error {
                 self.showWarning(titleText: "Atenção",
