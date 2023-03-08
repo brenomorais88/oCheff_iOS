@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import Alamofire
 
 class PhoneValidationViewController: ViewController {
     
@@ -27,6 +28,7 @@ class PhoneValidationViewController: ViewController {
     @IBOutlet weak var phoneText: UILabel?
     
     var phone: String? = nil
+    private var service: LoginService? = nil
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -39,6 +41,7 @@ class PhoneValidationViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupViews()
+        self.service = LoginService(delegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,80 +100,97 @@ class PhoneValidationViewController: ViewController {
         )
         
         Auth.auth().signIn(with: credential) { authResult, error in
-            self.dismissLoading()
-            
             if let error = error {
               let authError = error as NSError
                 self.userLoginError(authError: authError)
               return
             }
+            self.codeValidationOK()
+        }
+    }
+    
+    private func codeValidationOK() {
+        self.service?.signIn { userLogged in
+            dismissLoading()
             
-            let vc = SignUpPasswordViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
+            if userLogged {
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.setRootLoggedUser()
+                
+            } else {
+                let vc = SignUpViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     
     private func userLoginError(authError: NSError) {
-        self.showWarning(titleText: "Erro",
-                         message: authError.localizedDescription,
-                         delegate: self)
-        
+        self.dismissLoading()
+       
 //        let isMFAEnabled = false
-//
 //        if isMFAEnabled, authError.code == AuthErrorCode.secondFactorRequired.rawValue {
-//          // The user is a multi-factor user. Second factor challenge is required.
-//          let resolver = authError
-//            .userInfo[AuthErrorUserInfoMultiFactorResolverKey] as! MultiFactorResolver
-//          var displayNameString = ""
-//          for tmpFactorInfo in resolver.hints {
-//            displayNameString += tmpFactorInfo.displayName ?? ""
-//            displayNameString += " "
-//          }
-//          self.showTextInputPrompt(
-//            withMessage: "Select factor to sign in\n\(displayNameString)",
-//            completionBlock: { userPressedOK, displayName in
-//              var selectedHint: PhoneMultiFactorInfo?
-//              for tmpFactorInfo in resolver.hints {
-//                if displayName == tmpFactorInfo.displayName {
-//                  selectedHint = tmpFactorInfo as? PhoneMultiFactorInfo
-//                }
-//              }
-//              PhoneAuthProvider.provider()
-//                .verifyPhoneNumber(with: selectedHint!, uiDelegate: nil,
-//                                   multiFactorSession: resolver
-//                                     .session) { verificationID, error in
-//                  if error != nil {
-//                    print(
-//                      "Multi factor start sign in failed. Error: \(error.debugDescription)"
-//                    )
-//                  } else {
-//                    self.showTextInputPrompt(
-//                      withMessage: "Verification code for \(selectedHint?.displayName ?? "")",
-//                      completionBlock: { userPressedOK, verificationCode in
-//                        let credential: PhoneAuthCredential? = PhoneAuthProvider.provider()
-//                          .credential(withVerificationID: verificationID!,
-//                                      verificationCode: verificationCode!)
-//                        let assertion: MultiFactorAssertion? = PhoneMultiFactorGenerator
-//                          .assertion(with: credential!)
-//                        resolver.resolveSignIn(with: assertion!) { authResult, error in
-//                          if error != nil {
-//                            print(
-//                              "Multi factor finanlize sign in failed. Error: \(error.debugDescription)"
-//                            )
-//                          } else {
-//                            self.navigationController?.popViewController(animated: true)
-//                          }
-//                        }
-//                      }
-//                    )
-//                  }
-//                }
-//            }
-//          )
-//        } else {
-//          self.showMessagePrompt(error.localizedDescription)
-//          return
-//        }
+        if authError.code == AuthErrorCode.secondFactorRequired.rawValue {
+          // The user is a multi-factor user. Second factor challenge is required.
+          let resolver = authError
+            .userInfo[AuthErrorUserInfoMultiFactorResolverKey] as! MultiFactorResolver
+          var displayNameString = ""
+          for tmpFactorInfo in resolver.hints {
+            displayNameString += tmpFactorInfo.displayName ?? ""
+            displayNameString += " "
+          }
+          self.showTextInputPrompt(
+            message: "Select factor to sign in\n\(displayNameString)",
+            completionBlock: { userPressedOK, displayName in
+              var selectedHint: PhoneMultiFactorInfo?
+              for tmpFactorInfo in resolver.hints {
+                if displayName == tmpFactorInfo.displayName {
+                  selectedHint = tmpFactorInfo as? PhoneMultiFactorInfo
+                }
+              }
+              PhoneAuthProvider.provider()
+                .verifyPhoneNumber(with: selectedHint!, uiDelegate: nil,
+                                   multiFactorSession: resolver
+                                     .session) { verificationID, error in
+                  if error != nil {
+                    print(
+                      "Multi factor start sign in failed. Error: \(error.debugDescription)"
+                    )
+                  } else {
+                    self.showTextInputPrompt(
+                        message: "Verification code for \(selectedHint?.displayName ?? "")",
+                      completionBlock: { userPressedOK, verificationCode in
+                        let credential: PhoneAuthCredential? = PhoneAuthProvider.provider()
+                          .credential(withVerificationID: verificationID!,
+                                      verificationCode: verificationCode)
+                        let assertion: MultiFactorAssertion? = PhoneMultiFactorGenerator
+                          .assertion(with: credential!)
+                        resolver.resolveSignIn(with: assertion!) { authResult, error in
+                          if error != nil {
+                            print(
+                              "Multi factor finanlize sign in failed. Error: \(error.debugDescription)"
+                            )
+                          } else {
+                            self.navigationController?.popViewController(animated: true)
+                          }
+                        }
+                      }
+                    )
+                  }
+                }
+            }
+          )
+        } else {
+            self.showWarning(titleText: "Erro",
+                             message: authError.localizedDescription,
+                             delegate: self)
+          return
+        }
+    }
+    
+    
+    func showTextInputPrompt(message: String, completionBlock: (Bool, String) -> ()) {
+        print(message)
+        completionBlock(true, "")
     }
     
     //MARK: actions
@@ -250,5 +270,12 @@ extension PhoneValidationViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         textField.superview?.setupNotSelectedTextField()
+    }
+}
+
+
+extension PhoneValidationViewController: ServiceProtocol {
+    func handleError(_ error: Alamofire.AFError) {
+        print(error)
     }
 }

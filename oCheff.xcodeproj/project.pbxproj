@@ -16,6 +16,9 @@
 		0FEEF74229B81D6000071EBF /* UIButton+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF74129B81D6000071EBF /* UIButton+extension.swift */; };
 		0FEEF74629B8C42D00071EBF /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF74429B8C42D00071EBF /* LoadingViewController.swift */; };
 		0FEEF74729B8C42D00071EBF /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEEF74529B8C42D00071EBF /* LoadingViewController.xib */; };
+		0FEEF74A29B8C64700071EBF /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF74929B8C64700071EBF /* LoginService.swift */; };
+		0FEEF74C29B8CFEB00071EBF /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF74B29B8CFEB00071EBF /* Service.swift */; };
+		0FEEF74F29B8D10600071EBF /* AFSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF74E29B8D10600071EBF /* AFSetup.swift */; };
 		203713B529A934C2003376A6 /* CurrentTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203713B429A934C2003376A6 /* CurrentTableViewModel.swift */; };
 		203713B829A934E8003376A6 /* CurrentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203713B629A934E8003376A6 /* CurrentTableViewController.swift */; };
 		203713B929A934E8003376A6 /* CurrentTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 203713B729A934E8003376A6 /* CurrentTableViewController.xib */; };
@@ -143,6 +146,9 @@
 		0FEEF74129B81D6000071EBF /* UIButton+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+extension.swift"; sourceTree = "<group>"; };
 		0FEEF74429B8C42D00071EBF /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		0FEEF74529B8C42D00071EBF /* LoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
+		0FEEF74929B8C64700071EBF /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		0FEEF74B29B8CFEB00071EBF /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		0FEEF74E29B8D10600071EBF /* AFSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFSetup.swift; sourceTree = "<group>"; };
 		203713B429A934C2003376A6 /* CurrentTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTableViewModel.swift; sourceTree = "<group>"; };
 		203713B629A934E8003376A6 /* CurrentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTableViewController.swift; sourceTree = "<group>"; };
 		203713B729A934E8003376A6 /* CurrentTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentTableViewController.xib; sourceTree = "<group>"; };
@@ -294,6 +300,22 @@
 				0FEEF74529B8C42D00071EBF /* LoadingViewController.xib */,
 			);
 			path = ComonUI;
+			sourceTree = "<group>";
+		};
+		0FEEF74829B8C63500071EBF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0FEEF74929B8C64700071EBF /* LoginService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		0FEEF74D29B8D0EB00071EBF /* AFSetup */ = {
+			isa = PBXGroup;
+			children = (
+				0FEEF74E29B8D10600071EBF /* AFSetup.swift */,
+			);
+			path = AFSetup;
 			sourceTree = "<group>";
 		};
 		203713B029A93497003376A6 /* CurrentTable */ = {
@@ -495,6 +517,7 @@
 		20529E7D29A01F04008112CE /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				0FEEF74D29B8D0EB00071EBF /* AFSetup */,
 				0FEEF74329B8C3F900071EBF /* ComonUI */,
 				20529EA629A12C89008112CE /* Base */,
 				20529EA529A12C83008112CE /* Extensions */,
@@ -505,8 +528,8 @@
 		20529E7E29A01F13008112CE /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				0FEEF74829B8C63500071EBF /* Service */,
 				20529E8129A01F39008112CE /* View */,
-				20529E8029A01F34008112CE /* Model */,
 				20529E7F29A01F2A008112CE /* ViewModel */,
 				20529EB629A13319008112CE /* SignInCoordinator.swift */,
 			);
@@ -519,13 +542,6 @@
 				20529E8629A01FE9008112CE /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		20529E8029A01F34008112CE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		20529E8129A01F39008112CE /* View */ = {
@@ -621,6 +637,7 @@
 				20529EB429A132CD008112CE /* TabBarController.swift */,
 				20529EBD29A1440D008112CE /* ViewController.swift */,
 				2052E2EF29A3E1EB00BFA7F0 /* NavigationController.swift */,
+				0FEEF74B29B8CFEB00071EBF /* Service.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1337,6 +1354,7 @@
 				20529EE029A16246008112CE /* HistoricViewModel.swift in Sources */,
 				20529EAD29A12EC5008112CE /* HomeViewController.swift in Sources */,
 				0FEEF74629B8C42D00071EBF /* LoadingViewController.swift in Sources */,
+				0FEEF74C29B8CFEB00071EBF /* Service.swift in Sources */,
 				20529F0729A2927E008112CE /* EstablishmentsViewModel.swift in Sources */,
 				2052E2E029A3BD1900BFA7F0 /* NewTableViewModel.swift in Sources */,
 				20C694CF29970FB6006AE6FB /* AppDelegate.swift in Sources */,
@@ -1360,7 +1378,9 @@
 				203713DC29A96D73003376A6 /* MenuItemViewModel.swift in Sources */,
 				2052E2E329A3BD2E00BFA7F0 /* NewTableViewController.swift in Sources */,
 				203713B529A934C2003376A6 /* CurrentTableViewModel.swift in Sources */,
+				0FEEF74A29B8C64700071EBF /* LoginService.swift in Sources */,
 				20529EBC29A14133008112CE /* HomeCoordinator.swift in Sources */,
+				0FEEF74F29B8D10600071EBF /* AFSetup.swift in Sources */,
 				20C694D129970FB6006AE6FB /* SceneDelegate.swift in Sources */,
 				20529F1A29A29ECA008112CE /* String+extension.swift in Sources */,
 				203713BC29A93D61003376A6 /* Double+extension.swift in Sources */,

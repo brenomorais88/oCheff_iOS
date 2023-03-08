@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class SignUpViewController: ViewController {
     @IBOutlet weak var nameTextField: UITextField?
@@ -13,6 +14,8 @@ class SignUpViewController: ViewController {
     @IBOutlet weak var mailTextField: UITextField?
     @IBOutlet weak var googleView: UIView?
     @IBOutlet weak var fbView: UIView?
+    
+    private var service: LoginService? = nil
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -25,6 +28,7 @@ class SignUpViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupViews()
+        self.service = LoginService(delegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,8 +44,6 @@ class SignUpViewController: ViewController {
         secondNameTextField?.delegate = self
         mailTextField?.delegate = self
     }
-    
-    
     
     //MARK: actions
 
@@ -74,3 +76,8 @@ extension SignUpViewController: UITextFieldDelegate {
     }
 }
 
+extension SignUpViewController: ServiceProtocol {
+    func handleError(_ error: Alamofire.AFError) {
+        print(error)
+    }
+}
