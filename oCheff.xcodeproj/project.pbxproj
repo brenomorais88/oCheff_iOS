@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		05FF110D25C5642C9BD6E6E9 /* Pods_oCheffTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8AD6C72FAC76EF9DCD71A7C /* Pods_oCheffTests.framework */; };
+		0FEEF73729B8061B00071EBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FEEF73629B8061A00071EBF /* GoogleService-Info.plist */; };
+		0FEEF73A29B8075A00071EBF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0FEEF73929B8075A00071EBF /* FirebaseAnalytics */; };
+		0FEEF73C29B8075A00071EBF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0FEEF73B29B8075A00071EBF /* FirebaseAuth */; };
 		203713B529A934C2003376A6 /* CurrentTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203713B429A934C2003376A6 /* CurrentTableViewModel.swift */; };
 		203713B829A934E8003376A6 /* CurrentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203713B629A934E8003376A6 /* CurrentTableViewController.swift */; };
 		203713B929A934E8003376A6 /* CurrentTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 203713B729A934E8003376A6 /* CurrentTableViewController.xib */; };
@@ -129,6 +132,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FEEF73629B8061A00071EBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		203713B429A934C2003376A6 /* CurrentTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTableViewModel.swift; sourceTree = "<group>"; };
 		203713B629A934E8003376A6 /* CurrentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTableViewController.swift; sourceTree = "<group>"; };
 		203713B729A934E8003376A6 /* CurrentTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentTableViewController.xib; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FEEF73A29B8075A00071EBF /* FirebaseAnalytics in Frameworks */,
+				0FEEF73C29B8075A00071EBF /* FirebaseAuth in Frameworks */,
 				3E4BCA777C77F36C85CEBE1B /* Pods_oCheff.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -937,12 +943,13 @@
 		20C694CD29970FB6006AE6FB /* oCheff */ = {
 			isa = PBXGroup;
 			children = (
+				20C694D729970FB8006AE6FB /* Assets.xcassets */,
+				20C694D929970FB8006AE6FB /* LaunchScreen.storyboard */,
 				20529E8829A0265A008112CE /* Main.storyboard */,
 				20C694CE29970FB6006AE6FB /* AppDelegate.swift */,
 				20C694D029970FB6006AE6FB /* SceneDelegate.swift */,
-				20C694D729970FB8006AE6FB /* Assets.xcassets */,
-				20C694D929970FB8006AE6FB /* LaunchScreen.storyboard */,
 				20C694DC29970FB8006AE6FB /* Info.plist */,
+				0FEEF73629B8061A00071EBF /* GoogleService-Info.plist */,
 				20529E7D29A01F04008112CE /* Util */,
 				20529E7C29A01EFD008112CE /* Features */,
 			);
@@ -976,7 +983,6 @@
 				A3671FD62F13F0AF56EA8399 /* Pods-oCheffTests.debug.xcconfig */,
 				908A420DE3E84953514BBBC8 /* Pods-oCheffTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -1001,12 +1007,17 @@
 				20C694C729970FB6006AE6FB /* Sources */,
 				20C694C829970FB6006AE6FB /* Frameworks */,
 				20C694C929970FB6006AE6FB /* Resources */,
+				11F8079C8532014A284960C0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = oCheff;
+			packageProductDependencies = (
+				0FEEF73929B8075A00071EBF /* FirebaseAnalytics */,
+				0FEEF73B29B8075A00071EBF /* FirebaseAuth */,
+			);
 			productName = oCheff;
 			productReference = 20C694CB29970FB6006AE6FB /* oCheff.app */;
 			productType = "com.apple.product-type.application";
@@ -1038,6 +1049,7 @@
 				20C694E729970FB8006AE6FB /* Sources */,
 				20C694E829970FB8006AE6FB /* Frameworks */,
 				20C694E929970FB8006AE6FB /* Resources */,
+				33AB16219E7CB6167A500815 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1081,6 +1093,9 @@
 				Base,
 			);
 			mainGroup = 20C694C229970FB6006AE6FB;
+			packageReferences = (
+				0FEEF73829B8075A00071EBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 20C694CC29970FB6006AE6FB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1124,6 +1139,7 @@
 				20529E8929A0265A008112CE /* Main.storyboard in Resources */,
 				20529EAE29A12EC5008112CE /* HomeViewController.xib in Resources */,
 				2052E2EE29A3C2CF00BFA7F0 /* EstablishmentDetailViewController.xib in Resources */,
+				0FEEF73729B8061B00071EBF /* GoogleService-Info.plist in Resources */,
 				203713EB29AA8E7D003376A6 /* OrderCell.xib in Resources */,
 				2052E2D829A3B88900BFA7F0 /* FavoritosViewController.xib in Resources */,
 				20529EDE29A16239008112CE /* HistoricViewController.xib in Resources */,
@@ -1151,6 +1167,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		11F8079C8532014A284960C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-oCheff/Pods-oCheff-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-oCheff/Pods-oCheff-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-oCheff/Pods-oCheff-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		33AB16219E7CB6167A500815 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-oCheff-oCheffUITests/Pods-oCheff-oCheffUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-oCheff-oCheffUITests/Pods-oCheff-oCheffUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-oCheff-oCheffUITests/Pods-oCheff-oCheffUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3C83DB43DB04340D2399C606 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1621,6 +1671,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0FEEF73829B8075A00071EBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0FEEF73929B8075A00071EBF /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FEEF73829B8075A00071EBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		0FEEF73B29B8075A00071EBF /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FEEF73829B8075A00071EBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 20C694C329970FB6006AE6FB /* Project object */;
 }
