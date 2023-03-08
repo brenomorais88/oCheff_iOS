@@ -29,13 +29,6 @@ extension UIView {
         self.backgroundColor = UIColor.appTextFieldViewGray
     }
     
-    func setupSecondaryBtn() {
-        self.layer.masksToBounds = true
-        self.layer.borderWidth = 1.0
-        self.layer.borderColor = UIColor.black.cgColor
-        self.backgroundColor = UIColor.white
-    }
-    
     func roundTop() {
         let rectShape = CAShapeLayer()
         rectShape.frame = self.frame

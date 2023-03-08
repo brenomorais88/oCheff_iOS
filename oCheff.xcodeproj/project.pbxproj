@@ -11,6 +11,9 @@
 		0FEEF73729B8061B00071EBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FEEF73629B8061A00071EBF /* GoogleService-Info.plist */; };
 		0FEEF73A29B8075A00071EBF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0FEEF73929B8075A00071EBF /* FirebaseAnalytics */; };
 		0FEEF73C29B8075A00071EBF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0FEEF73B29B8075A00071EBF /* FirebaseAuth */; };
+		0FEEF73E29B8129D00071EBF /* LoginPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF73D29B8129D00071EBF /* LoginPhoneViewController.swift */; };
+		0FEEF74029B812A800071EBF /* LoginPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEEF73F29B812A800071EBF /* LoginPhoneViewController.xib */; };
+		0FEEF74229B81D6000071EBF /* UIButton+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF74129B81D6000071EBF /* UIButton+extension.swift */; };
 		203713B529A934C2003376A6 /* CurrentTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203713B429A934C2003376A6 /* CurrentTableViewModel.swift */; };
 		203713B829A934E8003376A6 /* CurrentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203713B629A934E8003376A6 /* CurrentTableViewController.swift */; };
 		203713B929A934E8003376A6 /* CurrentTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 203713B729A934E8003376A6 /* CurrentTableViewController.xib */; };
@@ -133,6 +136,9 @@
 
 /* Begin PBXFileReference section */
 		0FEEF73629B8061A00071EBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0FEEF73D29B8129D00071EBF /* LoginPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPhoneViewController.swift; sourceTree = "<group>"; };
+		0FEEF73F29B812A800071EBF /* LoginPhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginPhoneViewController.xib; sourceTree = "<group>"; };
+		0FEEF74129B81D6000071EBF /* UIButton+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+extension.swift"; sourceTree = "<group>"; };
 		203713B429A934C2003376A6 /* CurrentTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTableViewModel.swift; sourceTree = "<group>"; };
 		203713B629A934E8003376A6 /* CurrentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTableViewController.swift; sourceTree = "<group>"; };
 		203713B729A934E8003376A6 /* CurrentTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentTableViewController.xib; sourceTree = "<group>"; };
@@ -511,6 +517,8 @@
 		20529E8129A01F39008112CE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0FEEF73D29B8129D00071EBF /* LoginPhoneViewController.swift */,
+				0FEEF73F29B812A800071EBF /* LoginPhoneViewController.xib */,
 				20529E8229A01FD8008112CE /* LoginViewController.swift */,
 				20529E8329A01FD8008112CE /* LoginViewController.xib */,
 				20529E8E29A04994008112CE /* SignUpViewController.swift */,
@@ -586,6 +594,7 @@
 				20529E9629A05D9D008112CE /* UIViewController+extension.swift */,
 				20529F1929A29EC9008112CE /* String+extension.swift */,
 				203713BB29A93D61003376A6 /* Double+extension.swift */,
+				0FEEF74129B81D6000071EBF /* UIButton+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1139,6 +1148,7 @@
 				20529E8929A0265A008112CE /* Main.storyboard in Resources */,
 				20529EAE29A12EC5008112CE /* HomeViewController.xib in Resources */,
 				2052E2EE29A3C2CF00BFA7F0 /* EstablishmentDetailViewController.xib in Resources */,
+				0FEEF74029B812A800071EBF /* LoginPhoneViewController.xib in Resources */,
 				0FEEF73729B8061B00071EBF /* GoogleService-Info.plist in Resources */,
 				203713EB29AA8E7D003376A6 /* OrderCell.xib in Resources */,
 				2052E2D829A3B88900BFA7F0 /* FavoritosViewController.xib in Resources */,
@@ -1291,9 +1301,11 @@
 				20529ED629A161F1008112CE /* ProfileViewModel.swift in Sources */,
 				20529EC429A1518C008112CE /* CustomPageViewController.swift in Sources */,
 				2052E2F029A3E1EB00BFA7F0 /* NavigationController.swift in Sources */,
+				0FEEF73E29B8129D00071EBF /* LoginPhoneViewController.swift in Sources */,
 				20529EBE29A1440D008112CE /* ViewController.swift in Sources */,
 				20529EDD29A16239008112CE /* HistoricViewController.swift in Sources */,
 				20529F0E29A29BAE008112CE /* EstablishmentCell.swift in Sources */,
+				0FEEF74229B81D6000071EBF /* UIButton+extension.swift in Sources */,
 				20529E9729A05D9D008112CE /* UIViewController+extension.swift in Sources */,
 				20529E8429A01FD8008112CE /* LoginViewController.swift in Sources */,
 				203713EA29AA8E7D003376A6 /* OrderCell.swift in Sources */,
@@ -1519,7 +1531,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bit2b.oCheff;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bit2b.ocheff;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1547,7 +1559,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bit2b.oCheff;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bit2b.ocheff;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

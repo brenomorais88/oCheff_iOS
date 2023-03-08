@@ -32,6 +32,10 @@ extension UIColor {
         return UIColor.white
     }
     
+    static var primaryBtnBackGroundColor: UIColor {
+        return UIColor.black
+    }
+    
     //MARK: Util
     
     static func colorFromHex(_ hex: String) -> UIColor {

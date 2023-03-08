@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        FirebaseApp.configure()
         return true
     }
 
@@ -31,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupRoot() {
-        let userLogin: Bool = true
+        let userLogin: Bool = false
         
         if userLogin {
             setRootLoggedUser()
@@ -39,10 +40,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             setRootNotLoggedUser()
         }
+        
+        
+        
+        
+//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//            appDelegate.setRootLoggedUser()
     }
     
     func setRootNotLoggedUser() {
-        let vc = LoginViewController()
+        let vc = LoginPhoneViewController()
         let nav = UINavigationController(rootViewController: vc)
         window?.rootViewController = nav
         window?.makeKeyAndVisible()

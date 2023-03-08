@@ -10,7 +10,6 @@ import UIKit
 class SignUpViewController: ViewController {
     @IBOutlet weak var nameTextField: UITextField?
     @IBOutlet weak var secondNameTextField: UITextField?
-    @IBOutlet weak var phoneTextField: UITextField?
     @IBOutlet weak var mailTextField: UITextField?
     @IBOutlet weak var googleView: UIView?
     @IBOutlet weak var fbView: UIView?
@@ -39,9 +38,12 @@ class SignUpViewController: ViewController {
         
         nameTextField?.delegate = self
         secondNameTextField?.delegate = self
-        phoneTextField?.delegate = self
         mailTextField?.delegate = self
     }
+    
+    
+    
+    //MARK: actions
 
     @IBAction func signUp(_ sender: Any) {
         let vc = PhoneValidationViewController()
@@ -63,7 +65,6 @@ extension SignUpViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         nameTextField?.superview?.setupNotSelectedTextField()
         secondNameTextField?.superview?.setupNotSelectedTextField()
-        phoneTextField?.superview?.setupNotSelectedTextField()
         mailTextField?.superview?.setupNotSelectedTextField()
         textField.superview?.setupSelectedTextField()
     }

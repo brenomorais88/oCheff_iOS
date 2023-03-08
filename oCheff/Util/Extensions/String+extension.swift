@@ -26,4 +26,9 @@ extension String {
         let fontAttributes = [NSAttributedString.Key.font: font]
         return self.size(withAttributes: fontAttributes)
     }
+    
+    func clearPhoneString() -> String {
+        let cleanPhone = self.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "-", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "")
+        return cleanPhone
+    }
 }

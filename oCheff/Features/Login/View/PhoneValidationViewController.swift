@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class PhoneValidationViewController: ViewController {
     
@@ -14,12 +16,17 @@ class PhoneValidationViewController: ViewController {
     @IBOutlet weak var thirdTextField: UITextField?
     @IBOutlet weak var fourthTextField: UITextField?
     @IBOutlet weak var fifthTextField: UITextField?
+    @IBOutlet weak var sixthTextField: UITextField?
     
     @IBOutlet weak var firstViewCode: UIView?
     @IBOutlet weak var secondViewCode: UIView?
     @IBOutlet weak var thirdViewCode: UIView?
     @IBOutlet weak var fourthViewCode: UIView?
     @IBOutlet weak var fifthViewCode: UIView?
+    @IBOutlet weak var sixthViewCode: UIView?
+    @IBOutlet weak var phoneText: UILabel?
+    
+    var phone: String? = nil
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -45,22 +52,139 @@ class PhoneValidationViewController: ViewController {
         self.thirdTextField?.delegate = self
         self.fourthTextField?.delegate = self
         self.fifthTextField?.delegate = self
+        self.sixthTextField?.delegate = self
         
         self.firstTextField?.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
         self.secondTextField?.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
         self.thirdTextField?.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
         self.fourthTextField?.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
         self.fifthTextField?.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
-    
+        self.sixthTextField?.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
+        
+        if let phone = self.phone {
+            self.phoneText?.text = "Preencha com o código enviado para o telefone preenchido \(phone)"
+        }
     }
+    
+    func getValidationCode() -> String? {
+        guard let code1 = self.firstTextField?.text,
+              let code2 = self.secondTextField?.text,
+              let code3 = self.thirdTextField?.text,
+              let code4 = self.fourthTextField?.text,
+              let code5 = self.fifthTextField?.text,
+              let code6 = self.sixthTextField?.text else {
+            
+            return nil
+        }
+        
+        let code = code1 + code2 + code3 + code4 + code5 + code6
+        
+        if code.count == 6 {
+            return code
+        }
+        
+        return nil
+    }
+    
+    private func signIn(verificationCode: String) {
+        guard let verificationID = UserDefaults.standard.string(forKey: "authVerificationID") else { return }
+        
+        let credential = PhoneAuthProvider.provider().credential(
+          withVerificationID: verificationID,
+          verificationCode: verificationCode
+        )
+        
+        Auth.auth().signIn(with: credential) { authResult, error in
+            if let error = error {
+                
+              let authError = error as NSError
+                self.userLoginError(authError: authError)
+              return
+            }
+            
+            let vc = SignUpPasswordViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    private func userLoginError(authError: NSError) {
+        self.showWarning(titleText: "Erro",
+                         message: authError.localizedDescription,
+                         delegate: self)
+        
+//        let isMFAEnabled = false
+//
+//        if isMFAEnabled, authError.code == AuthErrorCode.secondFactorRequired.rawValue {
+//          // The user is a multi-factor user. Second factor challenge is required.
+//          let resolver = authError
+//            .userInfo[AuthErrorUserInfoMultiFactorResolverKey] as! MultiFactorResolver
+//          var displayNameString = ""
+//          for tmpFactorInfo in resolver.hints {
+//            displayNameString += tmpFactorInfo.displayName ?? ""
+//            displayNameString += " "
+//          }
+//          self.showTextInputPrompt(
+//            withMessage: "Select factor to sign in\n\(displayNameString)",
+//            completionBlock: { userPressedOK, displayName in
+//              var selectedHint: PhoneMultiFactorInfo?
+//              for tmpFactorInfo in resolver.hints {
+//                if displayName == tmpFactorInfo.displayName {
+//                  selectedHint = tmpFactorInfo as? PhoneMultiFactorInfo
+//                }
+//              }
+//              PhoneAuthProvider.provider()
+//                .verifyPhoneNumber(with: selectedHint!, uiDelegate: nil,
+//                                   multiFactorSession: resolver
+//                                     .session) { verificationID, error in
+//                  if error != nil {
+//                    print(
+//                      "Multi factor start sign in failed. Error: \(error.debugDescription)"
+//                    )
+//                  } else {
+//                    self.showTextInputPrompt(
+//                      withMessage: "Verification code for \(selectedHint?.displayName ?? "")",
+//                      completionBlock: { userPressedOK, verificationCode in
+//                        let credential: PhoneAuthCredential? = PhoneAuthProvider.provider()
+//                          .credential(withVerificationID: verificationID!,
+//                                      verificationCode: verificationCode!)
+//                        let assertion: MultiFactorAssertion? = PhoneMultiFactorGenerator
+//                          .assertion(with: credential!)
+//                        resolver.resolveSignIn(with: assertion!) { authResult, error in
+//                          if error != nil {
+//                            print(
+//                              "Multi factor finanlize sign in failed. Error: \(error.debugDescription)"
+//                            )
+//                          } else {
+//                            self.navigationController?.popViewController(animated: true)
+//                          }
+//                        }
+//                      }
+//                    )
+//                  }
+//                }
+//            }
+//          )
+//        } else {
+//          self.showMessagePrompt(error.localizedDescription)
+//          return
+//        }
+    }
+    
+    //MARK: actions
 
     @IBAction func resentCode(_ sender: Any) {
         
     }
     
     @IBAction func continueSignUp(_ sender: Any) {
-        let vc = SignUpPasswordViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        guard let text = self.getValidationCode() else {
+            self.showWarning(titleText: "Atenção",
+                             message: "Preencha com o código enviado ao seu celular",
+                             delegate: self)
+            return
+        }
+        
+        self.signIn(verificationCode: text)
     }
     
     @IBAction func changeNumber(_ sender: Any) {
@@ -68,6 +192,15 @@ class PhoneValidationViewController: ViewController {
     }
 }
 
+extension PhoneValidationViewController: WarningProtocol {
+    func didTapContinueButton() {
+        
+    }
+    
+    func didTapSecondaryButton() {
+        
+    }
+}
 
 extension PhoneValidationViewController: UITextFieldDelegate {
  
@@ -91,7 +224,10 @@ extension PhoneValidationViewController: UITextFieldDelegate {
                 fifthTextField?.becomeFirstResponder()
                 
             case fifthTextField:
-                fifthTextField?.resignFirstResponder()
+                sixthTextField?.becomeFirstResponder()
+                
+            case sixthTextField:
+                sixthTextField?.resignFirstResponder()
                 
             default:
                 break
