@@ -19,6 +19,7 @@
 		0FEEF74A29B8C64700071EBF /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF74929B8C64700071EBF /* LoginService.swift */; };
 		0FEEF74C29B8CFEB00071EBF /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF74B29B8CFEB00071EBF /* Service.swift */; };
 		0FEEF74F29B8D10600071EBF /* AFSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF74E29B8D10600071EBF /* AFSetup.swift */; };
+		0FEEF75229BA226300071EBF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF75129BA226300071EBF /* User.swift */; };
 		203713B529A934C2003376A6 /* CurrentTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203713B429A934C2003376A6 /* CurrentTableViewModel.swift */; };
 		203713B829A934E8003376A6 /* CurrentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203713B629A934E8003376A6 /* CurrentTableViewController.swift */; };
 		203713B929A934E8003376A6 /* CurrentTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 203713B729A934E8003376A6 /* CurrentTableViewController.xib */; };
@@ -149,6 +150,7 @@
 		0FEEF74929B8C64700071EBF /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		0FEEF74B29B8CFEB00071EBF /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0FEEF74E29B8D10600071EBF /* AFSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFSetup.swift; sourceTree = "<group>"; };
+		0FEEF75129BA226300071EBF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		203713B429A934C2003376A6 /* CurrentTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTableViewModel.swift; sourceTree = "<group>"; };
 		203713B629A934E8003376A6 /* CurrentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTableViewController.swift; sourceTree = "<group>"; };
 		203713B729A934E8003376A6 /* CurrentTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentTableViewController.xib; sourceTree = "<group>"; };
@@ -316,6 +318,14 @@
 				0FEEF74E29B8D10600071EBF /* AFSetup.swift */,
 			);
 			path = AFSetup;
+			sourceTree = "<group>";
+		};
+		0FEEF75029BA225400071EBF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0FEEF75129BA226300071EBF /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		203713B029A93497003376A6 /* CurrentTable */ = {
@@ -528,6 +538,7 @@
 		20529E7E29A01F13008112CE /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				0FEEF75029BA225400071EBF /* Model */,
 				0FEEF74829B8C63500071EBF /* Service */,
 				20529E8129A01F39008112CE /* View */,
 				20529E7F29A01F2A008112CE /* ViewModel */,
@@ -1384,6 +1395,7 @@
 				20C694D129970FB6006AE6FB /* SceneDelegate.swift in Sources */,
 				20529F1A29A29ECA008112CE /* String+extension.swift in Sources */,
 				203713BC29A93D61003376A6 /* Double+extension.swift in Sources */,
+				0FEEF75229BA226300071EBF /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1555,6 +1567,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3G9G4B4KL8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = oCheff/Info.plist;
 				INFOPLIST_KEY_NSMainNibFile = Main;
@@ -1583,6 +1596,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3G9G4B4KL8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = oCheff/Info.plist;
 				INFOPLIST_KEY_NSMainNibFile = Main;

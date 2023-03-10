@@ -10,7 +10,7 @@ import Alamofire
 
 protocol LoginServiceProtocol {
     func signIn(completion: (Bool) -> ())
-    func signUp(completion: (Bool) -> ())
+    func signUp(user: CreateUserRequest, callback: (Bool, UserResponse?) -> ())
     func checkSession(completion: (Bool) -> ())
     func logOut(completion: (Bool) -> ())
 }
@@ -43,8 +43,24 @@ extension LoginService: LoginServiceProtocol {
         completion(false)
     }
     
-    func signUp(completion: (Bool) -> ()) {
-        completion(true)
+    func signUp(user: CreateUserRequest, callback: (Bool, UserResponse?) -> ()) {
+        callback(true, nil)
+        
+//        AF.request("\(self.baseURL)/Users/create",
+//                   method: .post,
+//                   parameters: user,
+//                   encoder: JSONParameterEncoder.default).responseDecodable(of: UserResponse.self) { response in
+//
+//            switch response.result {
+//                case .success:
+//                    print("Validation Successful")
+//                    callback(true, response.value)
+//
+//                case let .failure(error):
+//                    callback(false, nil)
+////                    self.handleError(error)
+//            }
+//        }
     }
     
     func checkSession(completion: (Bool) -> ()) {

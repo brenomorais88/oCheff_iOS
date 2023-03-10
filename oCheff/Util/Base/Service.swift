@@ -13,7 +13,7 @@ protocol ServiceProtocol {
 }
 
 class Service {
-    let baseURL: String = ""
+    let baseURL: String = "https://webapi.ocheff.com/ocheff/api/v1"
     let delegate: ServiceProtocol?
     
     init(delegate: ServiceProtocol?) {

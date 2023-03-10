@@ -119,6 +119,7 @@ class PhoneValidationViewController: ViewController {
                 
             } else {
                 let vc = SignUpViewController()
+                vc.phone = self.phone
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }

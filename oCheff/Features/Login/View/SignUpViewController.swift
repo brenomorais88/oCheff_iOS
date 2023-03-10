@@ -16,6 +16,7 @@ class SignUpViewController: ViewController {
     @IBOutlet weak var fbView: UIView?
     
     private var service: LoginService? = nil
+    var phone: String? = nil
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -45,11 +46,34 @@ class SignUpViewController: ViewController {
         mailTextField?.delegate = self
     }
     
+    private func createUserModel() -> CreateUserRequest? {
+        guard let name = self.nameTextField?.text,
+              let surName = self.secondNameTextField?.text,
+              let mail = self.mailTextField?.text,
+              let phone = self.phone?.clearPhoneString() else {
+            return nil
+        }
+        
+        let user = CreateUserRequest(deviceID: "+55\(phone)",
+                                     name: name,
+                                     surName: surName,
+                                     phone: phone,
+                                     email: mail)
+        
+        return user
+    }
+    
     //MARK: actions
 
     @IBAction func signUp(_ sender: Any) {
-        let vc = PhoneValidationViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        guard let user = self.createUserModel() else {
+            return
+        }
+        
+        self.service?.signUp(user: user, callback: { success, user  in
+            let vc = PhoneValidationViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        })
     }
     
     @IBAction func ggSignUp(_ sender: Any) {
