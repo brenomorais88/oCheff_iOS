@@ -71,8 +71,10 @@ class SignUpViewController: ViewController {
         }
         
         self.service?.signUp(user: user, callback: { success, user  in
-            let vc = PhoneValidationViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.setRootLoggedUser()
+//            let vc = PhoneValidationViewController()
+//            self.navigationController?.pushViewController(vc, animated: true)
         })
     }
     

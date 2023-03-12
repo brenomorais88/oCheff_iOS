@@ -7,54 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F62346CA-4B3F-4705-B4C0-F6E7FE6A1309"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "oCheff/Features/Login/View/SignUpViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "signUp(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "F62346CA-4B3F-4705-B4C0-F6E7FE6A1309 - 4b8ff1c2a284c3ec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "oCheff.SignUpViewController.signUp(Any) -&gt; ()"
-                  moduleName = "oCheff"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/brenomorais/Documents/projetos/Bit2b-iOS/oCheff/Features/Login/View/SignUpViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "108">
-               </Location>
-               <Location
-                  uuid = "F62346CA-4B3F-4705-B4C0-F6E7FE6A1309 - 38146984f77edd01"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;oCheff.UserResponse&gt;) -&gt; () in oCheff.SignUpViewController.signUp(Any) -&gt; ()"
-                  moduleName = "oCheff"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/brenomorais/Documents/projetos/Bit2b-iOS/oCheff/Features/Login/View/SignUpViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "80">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "2FAAF0E9-C75E-487D-B97E-DE38C5061C17"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"

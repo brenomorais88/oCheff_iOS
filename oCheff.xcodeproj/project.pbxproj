@@ -151,6 +151,7 @@
 		0FEEF74B29B8CFEB00071EBF /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		0FEEF74E29B8D10600071EBF /* AFSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFSetup.swift; sourceTree = "<group>"; };
 		0FEEF75129BA226300071EBF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0FEEF75329BBA72C00071EBF /* oCheff.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = oCheff.entitlements; sourceTree = "<group>"; };
 		203713B429A934C2003376A6 /* CurrentTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTableViewModel.swift; sourceTree = "<group>"; };
 		203713B629A934E8003376A6 /* CurrentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTableViewController.swift; sourceTree = "<group>"; };
 		203713B729A934E8003376A6 /* CurrentTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentTableViewController.xib; sourceTree = "<group>"; };
@@ -994,6 +995,7 @@
 		20C694CD29970FB6006AE6FB /* oCheff */ = {
 			isa = PBXGroup;
 			children = (
+				0FEEF75329BBA72C00071EBF /* oCheff.entitlements */,
 				20C694D729970FB8006AE6FB /* Assets.xcassets */,
 				20C694D929970FB8006AE6FB /* LaunchScreen.storyboard */,
 				20529E8829A0265A008112CE /* Main.storyboard */,
@@ -1565,16 +1567,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = oCheff/oCheff.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3G9G4B4KL8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = oCheff/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
+				INFOPLIST_KEY_NSCameraUsageDescription = "we need use camera to take a user picture";
 				INFOPLIST_KEY_NSMainNibFile = Main;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "we need use photo library to take a user picture";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1594,16 +1601,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = oCheff/oCheff.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3G9G4B4KL8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = oCheff/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
+				INFOPLIST_KEY_NSCameraUsageDescription = "we need use camera to take a user picture";
 				INFOPLIST_KEY_NSMainNibFile = Main;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "we need use photo library to take a user picture";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
