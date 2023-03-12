@@ -5,6 +5,7 @@ target 'oCheff' do
   use_frameworks!
   
   pod 'Alamofire', '~> 5.6.4'
+  pod 'GoogleSignIn'
 
   target 'oCheffTests' do
     inherit! :search_paths

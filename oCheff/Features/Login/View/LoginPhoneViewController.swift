@@ -9,6 +9,8 @@ import UIKit
 
 import Firebase
 import FirebaseAuth
+import FirebaseCore
+import GoogleSignIn
 
 class LoginPhoneViewController: ViewController {
     @IBOutlet weak var googleView: UIView?
@@ -74,6 +76,48 @@ class LoginPhoneViewController: ViewController {
           }
     }
     
+    private func getGGCredential() {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+        
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { [unowned self] result, error in
+            if error != nil {
+                self.showWarning(titleText: "erro",
+                                 message: "Erro no login do GG",
+                                 delegate: self)
+                return
+            }
+
+            guard let user = result?.user,
+                  let idToken = user.idToken?.tokenString else {
+                self.showWarning(titleText: "erro",
+                                 message: "Erro no login do GG",
+                                 delegate: self)
+                return
+            }
+            
+            let userToken = user.accessToken.tokenString
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                           accessToken: userToken)
+            self.doGGLogin(credential: credential)
+        }
+    }
+    
+    func doGGLogin(credential: AuthCredential) {
+        Auth.auth().signIn(with: credential) { result, error in
+            if error != nil {
+                self.showWarning(titleText: "erro",
+                                 message: "Erro no login do GG",
+                                 delegate: self)
+                return
+            }
+            
+            print(result)
+        }
+    }
+    
     // MARK: Actions
     
     @IBAction func signIn(_ sender: Any) {
@@ -86,6 +130,13 @@ class LoginPhoneViewController: ViewController {
         }
         
         sendValidationCode()
+    }
+    
+    @IBAction func ggButtonTapped(_ sender: Any) {
+        self.getGGCredential()
+    }
+    
+    @IBAction func fbButtonTapped(_ sender: Any) {
     }
 }
 

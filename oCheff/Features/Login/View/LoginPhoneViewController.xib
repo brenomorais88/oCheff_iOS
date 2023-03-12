@@ -101,7 +101,7 @@
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain"/>
                                             <connections>
-                                                <action selector="googleSignIn:" destination="-1" eventType="touchUpInside" id="Avd-Dp-LqA"/>
+                                                <action selector="ggButtonTapped:" destination="-1" eventType="touchUpInside" id="xYh-kd-HC7"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -170,7 +170,7 @@
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain"/>
                                             <connections>
-                                                <action selector="fbSignIn:" destination="-1" eventType="touchUpInside" id="Oes-Mr-mbX"/>
+                                                <action selector="fbButtonTapped:" destination="-1" eventType="touchUpInside" id="paz-TR-1PZ"/>
                                             </connections>
                                         </button>
                                     </subviews>
