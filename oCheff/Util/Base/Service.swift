@@ -8,19 +8,11 @@
 import Foundation
 import Alamofire
 
-protocol ServiceProtocol {
-    func handleError(_ error: AFError)
-}
-
 class Service {
-    let baseURL: String = "https://webapi.ocheff.com/ocheff/api/v1"
-    let delegate: ServiceProtocol?
+    let baseURL: String = "http://webapi.app.br.iron.hostazul.com.br/api/v1"
+    let decoder = JSONDecoder()
     
-    init(delegate: ServiceProtocol?) {
-        self.delegate = delegate
-    }
-    
-    func handleError(_ error: AFError) {
-        self.delegate?.handleError(error)
+    init() {
+        
     }
 }

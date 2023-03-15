@@ -13,6 +13,7 @@ class FavoritosViewController: ViewController {
     @IBOutlet weak var searchTextField: UITextField?
     
     let viewModel: FavoritosViewModel?
+    var establishments: [EstablishmentResponse] = []
     
     init(viewModel: FavoritosViewModel) {
         self.viewModel = viewModel
@@ -30,6 +31,7 @@ class FavoritosViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadContentData()
         self.setupBackButton()
         self.title = "Favoritos"
         self.setupViews()
@@ -43,6 +45,14 @@ class FavoritosViewController: ViewController {
     private func setupViews() {
         self.setupTableView()
     }
+    
+    private func loadContentData() {
+        
+        self.viewModel?.getFavoritesEstablishments(callback: { sucsess, response in
+            self.establishments = response ?? []
+            self.favoritesTV?.reloadData()
+        })
+    }
 
     private func setupTableView() {
         self.favoritesTV?.delegate = self
@@ -55,16 +65,14 @@ class FavoritosViewController: ViewController {
 
 extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return self.establishments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: EstablishmentCell.cellID,
                                                     for: indexPath) as? EstablishmentCell {
+            let establishment = self.establishments[indexPath.row]
+            cell.setupCell(establishment: establishment)
             return cell
         
         } else {

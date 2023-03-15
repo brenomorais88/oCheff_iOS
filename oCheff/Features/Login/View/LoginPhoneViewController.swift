@@ -11,12 +11,15 @@ import Firebase
 import FirebaseAuth
 import FirebaseCore
 import GoogleSignIn
+//import FBSDKLoginKit
 
 class LoginPhoneViewController: ViewController {
     @IBOutlet weak var googleView: UIView?
     @IBOutlet weak var fbView: UIView?
     @IBOutlet weak var signInBtn: UIButton?
     @IBOutlet weak var phoneTextField: UITextField?
+    
+//    let loginButton = FBSDKLoginButton()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -39,6 +42,7 @@ class LoginPhoneViewController: ViewController {
     
     private func setupViews() {
         self.phoneTextField?.delegate = self
+//        self.loginButton.delegate = self
         googleView?.addBorder()
         fbView?.addBorder()
     }

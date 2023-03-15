@@ -45,12 +45,16 @@ class ViewController: UIViewController {
     }
     
     func showLoading() {
-        loadingVC.modalPresentationStyle = .overFullScreen
-        loadingVC.modalTransitionStyle = .crossDissolve
-        self.present(loadingVC, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.loadingVC.modalPresentationStyle = .overFullScreen
+            self.loadingVC.modalTransitionStyle = .crossDissolve
+            self.present(self.loadingVC, animated: true, completion: nil)
+        }
     }
     
     func dismissLoading() {
-        self.loadingVC.dismiss(animated: true)
+        DispatchQueue.main.async {
+            self.loadingVC.dismiss(animated: true)
+        }
     }
 }

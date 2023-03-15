@@ -9,13 +9,20 @@ import Foundation
 
 class FavoritosViewModel: ViewModel {
     let delegate: HomeCoordinatorProtocol
+    let service: EstablishmentService
     
-    init(delegate: HomeCoordinatorProtocol) {
+    init(delegate: HomeCoordinatorProtocol,
+         service: EstablishmentService) {
         self.delegate = delegate
+        self.service = service
         super.init()
     }
     
     func showEstablishment() {
         self.delegate.showEstablishment()
+    }
+    
+    func getFavoritesEstablishments(callback: (Bool, [EstablishmentResponse]?) -> ()) {
+        self.service.getFavoritesEstablishments(callback: callback)
     }
 }

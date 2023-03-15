@@ -7,14 +7,15 @@
 
 import UIKit
 
-class EstablishmentsViewController: UIViewController {
+class EstablishmentsViewController: ViewController {
 
     @IBOutlet var establishmentsTV: UITableView?
     @IBOutlet weak var searchTextField: UITextField?
     @IBOutlet weak var categoriesColection: UICollectionView?
     
     let viewModel: EstablishmentsViewModel?
-    let categories: [String] = ["Tudo", "Oriental", "Italiano", "Burguer", "Doce", "Arabe", "Brasileira", "Outros"]
+    var categories: [EstablishmentCategoryResponse] = []
+    var establishments: [EstablishmentResponse] = []
     
     init(viewModel: EstablishmentsViewModel) {
         self.viewModel = viewModel
@@ -37,6 +38,11 @@ class EstablishmentsViewController: UIViewController {
         self.setupViews()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.loadCategories()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
@@ -47,10 +53,36 @@ class EstablishmentsViewController: UIViewController {
         self.setupTableView()
     }
     
+    private func loadCategories() {
+        self.showLoading()
+       
+        self.viewModel?.getEstablishmentCategory(callback: { succsess, response in
+            if succsess {
+                self.categories = response ?? []
+                self.categoriesColection?.reloadData()
+                self.categoriesColection?.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .left)
+                self.loadEstablishments()
+            } else {
+                print("MOSTRAR ERRO")
+            }
+        })
+    }
+    
+    private func loadEstablishments() {
+        self.viewModel?.getNearEstablishments(callback: { succsess, response in
+            if succsess {
+                self.establishments = response ?? []
+                self.establishmentsTV?.reloadData()
+                self.dismissLoading()
+            } else {
+                print("MOSTRAR ERRO")
+            }
+        })
+    }
+    
     private func setupTableView() {
         self.establishmentsTV?.delegate = self
         self.establishmentsTV?.dataSource = self
-        self.establishmentsTV?.reloadData()
         self.establishmentsTV?.register(UINib(nibName: EstablishmentCell.cellID, bundle: nil),
                                         forCellReuseIdentifier: EstablishmentCell.cellID)
     }
@@ -60,7 +92,7 @@ class EstablishmentsViewController: UIViewController {
         self.categoriesColection?.dataSource = self
         self.categoriesColection?.register(UINib(nibName: CategoriesCollCell.cellID, bundle: nil),
                                            forCellWithReuseIdentifier: CategoriesCollCell.cellID)
-        self.categoriesColection?.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .left)
+        
     }
     
     //MARK: actions
@@ -73,16 +105,14 @@ class EstablishmentsViewController: UIViewController {
 
 extension EstablishmentsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return self.establishments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: EstablishmentCell.cellID,
                                                     for: indexPath) as? EstablishmentCell {
+            let establishment = self.establishments[indexPath.row]
+            cell.setupCell(establishment: establishment)
             return cell
         
         } else {
@@ -107,7 +137,7 @@ extension EstablishmentsViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCollCell.cellID, for: indexPath) as? CategoriesCollCell {
             let categorie = self.categories[indexPath.row]
-            cell.setupCell(name: categorie)
+            cell.setupCell(name: categorie.name)
             return cell
         
         } else {
@@ -118,7 +148,7 @@ extension EstablishmentsViewController: UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let categorie = self.categories[indexPath.row]
         let height: CGFloat = 40
-        let width: CGFloat = categorie.widthOfString(usingFont: UIFont.systemFont(ofSize: 16)) + 20
+        let width: CGFloat = categorie.name.widthOfString(usingFont: UIFont.systemFont(ofSize: 16)) + 20
         
         return CGSize(width: width, height: height)
     }

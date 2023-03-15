@@ -6,6 +6,8 @@ target 'oCheff' do
   
   pod 'Alamofire', '~> 5.6.4'
   pod 'GoogleSignIn'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
 
   target 'oCheffTests' do
     inherit! :search_paths

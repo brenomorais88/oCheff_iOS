@@ -9,20 +9,17 @@ import Foundation
 import Alamofire
 
 protocol LoginServiceProtocol {
-    func signIn(completion: (Bool) -> ())
-    func signUp(user: CreateUserRequest, callback: (Bool, UserResponse?) -> ())
-    func checkSession(completion: (Bool) -> ())
-    func logOut(completion: (Bool) -> ())
+    func signIn(completion: @escaping (Bool) -> ())
+    func signUp(user: CreateUserRequest, completion: @escaping (Bool) -> ())
+    func checkSession(completion:  @escaping  (Bool) -> ())
+    func logOut(completion:  @escaping  (Bool) -> ())
 }
 
 class LoginService: Service {
-    override init(delegate: ServiceProtocol?) {
-        super.init(delegate: delegate)
-    }
 }
 
 extension LoginService: LoginServiceProtocol {
-    func signIn(completion: (Bool) -> ()) {
+    func signIn(completion: @escaping (Bool) -> ()) {
         
         let login = Login(email: "test@test.test", password: "testPassword")
         
@@ -36,38 +33,37 @@ extension LoginService: LoginServiceProtocol {
                     print("Validation Successful")
                 
                 case let .failure(error):
-                    self.handleError(error)
+                    print(error)
             }
         }
         
         completion(false)
     }
     
-    func signUp(user: CreateUserRequest, callback: (Bool, UserResponse?) -> ()) {
-        callback(true, nil)
-        
-//        AF.request("\(self.baseURL)/Users/create",
-//                   method: .post,
-//                   parameters: user,
-//                   encoder: JSONParameterEncoder.default).responseDecodable(of: UserResponse.self) { response in
-//
-//            switch response.result {
-//                case .success:
-//                    print("Validation Successful")
-//                    callback(true, response.value)
-//
-//                case let .failure(error):
-//                    callback(false, nil)
-////                    self.handleError(error)
-//            }
-//        }
+    func signUp(user: CreateUserRequest, completion: @escaping (Bool) -> ()) {
+        AF.request("\(self.baseURL)/Users/create",
+                   method: .post,
+                   parameters: user,
+                   encoder: JSONParameterEncoder.default).responseDecodable(of: UserResponse.self) { response in
+
+            switch response.result {
+                case .success:
+                    print("Validation Successful")
+                    completion(true)
+
+
+                case let .failure(error):
+                    completion(false)
+                    print(error)
+            }
+        }
     }
     
-    func checkSession(completion: (Bool) -> ()) {
+    func checkSession(completion: @escaping (Bool) -> ()) {
         completion(true)
     }
     
-    func logOut(completion: (Bool) -> ()) {
+    func logOut(completion: @escaping (Bool) -> ()) {
         completion(true)
     }
 }

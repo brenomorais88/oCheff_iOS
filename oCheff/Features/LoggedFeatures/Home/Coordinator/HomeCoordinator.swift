@@ -40,14 +40,17 @@ extension HomeCoordinator: HomeCoordinatorProtocol {
     }
     
     func showEstablishments() {
-        let viewModel = EstablishmentsViewModel(delegate: self)
+        let service = EstablishmentService()
+        let viewModel = EstablishmentsViewModel(delegate: self,
+                                                service: service)
         let vc = EstablishmentsViewController(viewModel: viewModel)
         vc.hidesBottomBarWhenPushed = true
         self.navigationController.pushViewController(vc, animated: true)
     }
     
     func showFavorites() {
-        let viewModel = FavoritosViewModel(delegate: self)
+        let service = EstablishmentService()
+        let viewModel = FavoritosViewModel(delegate: self, service: service)
         let vc = FavoritosViewController(viewModel: viewModel)
         vc.hidesBottomBarWhenPushed = true
         self.navigationController.pushViewController(vc, animated: true)

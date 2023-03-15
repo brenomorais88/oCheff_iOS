@@ -29,7 +29,7 @@ class SignUpViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupViews()
-        self.service = LoginService(delegate: self)
+        self.service = LoginService()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +70,7 @@ class SignUpViewController: ViewController {
             return
         }
         
-        self.service?.signUp(user: user, callback: { success, user  in
+        self.service?.signUp(user: user, completion: { user  in
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.setRootLoggedUser()
 //            let vc = PhoneValidationViewController()
@@ -99,11 +99,5 @@ extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         textField.superview?.setupNotSelectedTextField()
-    }
-}
-
-extension SignUpViewController: ServiceProtocol {
-    func handleError(_ error: Alamofire.AFError) {
-        print(error)
     }
 }

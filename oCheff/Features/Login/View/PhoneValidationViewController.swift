@@ -41,7 +41,7 @@ class PhoneValidationViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupViews()
-        self.service = LoginService(delegate: self)
+        self.service = LoginService()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,7 +111,7 @@ class PhoneValidationViewController: ViewController {
     
     private func codeValidationOK() {
         self.service?.signIn { userLogged in
-            dismissLoading()
+            self.dismissLoading()
             
             if userLogged {
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -271,12 +271,5 @@ extension PhoneValidationViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         textField.superview?.setupNotSelectedTextField()
-    }
-}
-
-
-extension PhoneValidationViewController: ServiceProtocol {
-    func handleError(_ error: Alamofire.AFError) {
-        print(error)
     }
 }

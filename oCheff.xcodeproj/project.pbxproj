@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		05FF110D25C5642C9BD6E6E9 /* Pods_oCheffTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8AD6C72FAC76EF9DCD71A7C /* Pods_oCheffTests.framework */; };
+		0FCFAD7429C24EF600BB3F87 /* EstablishmentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFAD7329C24EF600BB3F87 /* EstablishmentRequest.swift */; };
 		0FEEF73729B8061B00071EBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FEEF73629B8061A00071EBF /* GoogleService-Info.plist */; };
 		0FEEF73A29B8075A00071EBF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0FEEF73929B8075A00071EBF /* FirebaseAnalytics */; };
 		0FEEF73C29B8075A00071EBF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0FEEF73B29B8075A00071EBF /* FirebaseAuth */; };
@@ -20,6 +21,12 @@
 		0FEEF74C29B8CFEB00071EBF /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF74B29B8CFEB00071EBF /* Service.swift */; };
 		0FEEF74F29B8D10600071EBF /* AFSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF74E29B8D10600071EBF /* AFSetup.swift */; };
 		0FEEF75229BA226300071EBF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF75129BA226300071EBF /* User.swift */; };
+		0FEEF75629BE33AA00071EBF /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0FEEF75529BE33AA00071EBF /* FacebookCore */; };
+		0FEEF75829BE33AA00071EBF /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 0FEEF75729BE33AA00071EBF /* FacebookLogin */; };
+		0FEEF75B29BF1C9300071EBF /* EstablishmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF75A29BF1C9300071EBF /* EstablishmentService.swift */; };
+		0FEEF75F29BF1D4F00071EBF /* EstablishmentCategoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF75E29BF1D4F00071EBF /* EstablishmentCategoryResponse.swift */; };
+		0FEEF76129BF1D5C00071EBF /* EstablishmentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF76029BF1D5C00071EBF /* EstablishmentResponse.swift */; };
+		0FEEF76429BF293900071EBF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEEF76329BF293900071EBF /* HomeViewModel.swift */; };
 		203713B529A934C2003376A6 /* CurrentTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203713B429A934C2003376A6 /* CurrentTableViewModel.swift */; };
 		203713B829A934E8003376A6 /* CurrentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203713B629A934E8003376A6 /* CurrentTableViewController.swift */; };
 		203713B929A934E8003376A6 /* CurrentTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 203713B729A934E8003376A6 /* CurrentTableViewController.xib */; };
@@ -63,7 +70,6 @@
 		20529EA829A12D38008112CE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20529EA729A12D38008112CE /* Coordinator.swift */; };
 		20529EAD29A12EC5008112CE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20529EAB29A12EC5008112CE /* HomeViewController.swift */; };
 		20529EAE29A12EC5008112CE /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20529EAC29A12EC5008112CE /* HomeViewController.xib */; };
-		20529EB029A12F78008112CE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20529EAF29A12F78008112CE /* HomeViewModel.swift */; };
 		20529EB329A13083008112CE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20529EB229A13083008112CE /* ViewModel.swift */; };
 		20529EB529A132CD008112CE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20529EB429A132CD008112CE /* TabBarController.swift */; };
 		20529EB729A13319008112CE /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20529EB629A13319008112CE /* SignInCoordinator.swift */; };
@@ -141,6 +147,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FCFAD7329C24EF600BB3F87 /* EstablishmentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstablishmentRequest.swift; sourceTree = "<group>"; };
 		0FEEF73629B8061A00071EBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0FEEF73D29B8129D00071EBF /* LoginPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPhoneViewController.swift; sourceTree = "<group>"; };
 		0FEEF73F29B812A800071EBF /* LoginPhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginPhoneViewController.xib; sourceTree = "<group>"; };
@@ -152,6 +159,10 @@
 		0FEEF74E29B8D10600071EBF /* AFSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFSetup.swift; sourceTree = "<group>"; };
 		0FEEF75129BA226300071EBF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0FEEF75329BBA72C00071EBF /* oCheff.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = oCheff.entitlements; sourceTree = "<group>"; };
+		0FEEF75A29BF1C9300071EBF /* EstablishmentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstablishmentService.swift; sourceTree = "<group>"; };
+		0FEEF75E29BF1D4F00071EBF /* EstablishmentCategoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstablishmentCategoryResponse.swift; sourceTree = "<group>"; };
+		0FEEF76029BF1D5C00071EBF /* EstablishmentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstablishmentResponse.swift; sourceTree = "<group>"; };
+		0FEEF76329BF293900071EBF /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		203713B429A934C2003376A6 /* CurrentTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTableViewModel.swift; sourceTree = "<group>"; };
 		203713B629A934E8003376A6 /* CurrentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTableViewController.swift; sourceTree = "<group>"; };
 		203713B729A934E8003376A6 /* CurrentTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentTableViewController.xib; sourceTree = "<group>"; };
@@ -195,7 +206,6 @@
 		20529EA729A12D38008112CE /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		20529EAB29A12EC5008112CE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		20529EAC29A12EC5008112CE /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		20529EAF29A12F78008112CE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		20529EB229A13083008112CE /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		20529EB429A132CD008112CE /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		20529EB629A13319008112CE /* SignInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
@@ -271,9 +281,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FEEF75829BE33AA00071EBF /* FacebookLogin in Frameworks */,
 				0FEEF73A29B8075A00071EBF /* FirebaseAnalytics in Frameworks */,
 				0FEEF73C29B8075A00071EBF /* FirebaseAuth in Frameworks */,
 				3E4BCA777C77F36C85CEBE1B /* Pods_oCheff.framework in Frameworks */,
+				0FEEF75629BE33AA00071EBF /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +339,32 @@
 				0FEEF75129BA226300071EBF /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0FEEF75929BF1C5F00071EBF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0FEEF75A29BF1C9300071EBF /* EstablishmentService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0FEEF75D29BF1D3500071EBF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0FEEF75E29BF1D4F00071EBF /* EstablishmentCategoryResponse.swift */,
+				0FEEF76029BF1D5C00071EBF /* EstablishmentResponse.swift */,
+				0FCFAD7329C24EF600BB3F87 /* EstablishmentRequest.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0FEEF76229BF292200071EBF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0FEEF76329BF293900071EBF /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		203713B029A93497003376A6 /* CurrentTable */ = {
@@ -612,21 +650,6 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		20529EA329A12C6A008112CE /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				20529EAF29A12F78008112CE /* HomeViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		20529EA429A12C70008112CE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		20529EA529A12C83008112CE /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -657,8 +680,7 @@
 		20529EB829A1407F008112CE /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				20529EA429A12C70008112CE /* Model */,
-				20529EA329A12C6A008112CE /* ViewModel */,
+				0FEEF76229BF292200071EBF /* ViewModel */,
 				20529EA229A12C65008112CE /* Coordinator */,
 				20529EA129A12C5F008112CE /* View */,
 			);
@@ -823,7 +845,8 @@
 		20529F0229A29239008112CE /* Establishments */ = {
 			isa = PBXGroup;
 			children = (
-				20529F0529A29255008112CE /* Model */,
+				0FEEF75D29BF1D3500071EBF /* Model */,
+				0FEEF75929BF1C5F00071EBF /* Services */,
 				20529F0429A2924E008112CE /* ViewModel */,
 				20529F0329A29248008112CE /* View */,
 			);
@@ -850,13 +873,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		20529F0529A29255008112CE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		20529F1029A29BB3008112CE /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -871,7 +887,6 @@
 		2052E2D129A3B84C00BFA7F0 /* Favoritos */ = {
 			isa = PBXGroup;
 			children = (
-				2052E2D429A3B87300BFA7F0 /* Model */,
 				2052E2D329A3B86D00BFA7F0 /* ViewModel */,
 				2052E2D229A3B86700BFA7F0 /* View */,
 			);
@@ -893,13 +908,6 @@
 				2052E2D929A3B89C00BFA7F0 /* FavoritosViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		2052E2D429A3B87300BFA7F0 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		2052E2DB29A3BCF100BFA7F0 /* NewTable */ = {
@@ -1070,6 +1078,8 @@
 			packageProductDependencies = (
 				0FEEF73929B8075A00071EBF /* FirebaseAnalytics */,
 				0FEEF73B29B8075A00071EBF /* FirebaseAuth */,
+				0FEEF75529BE33AA00071EBF /* FacebookCore */,
+				0FEEF75729BE33AA00071EBF /* FacebookLogin */,
 			);
 			productName = oCheff;
 			productReference = 20C694CB29970FB6006AE6FB /* oCheff.app */;
@@ -1148,6 +1158,7 @@
 			mainGroup = 20C694C229970FB6006AE6FB;
 			packageReferences = (
 				0FEEF73829B8075A00071EBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				0FEEF75429BE33AA00071EBF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 20C694CC29970FB6006AE6FB /* Products */;
 			projectDirPath = "";
@@ -1329,6 +1340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FEEF76129BF1D5C00071EBF /* EstablishmentResponse.swift in Sources */,
 				20529EFC29A2629E008112CE /* HistoricDetailItemCell.swift in Sources */,
 				20529E8B29A0435A008112CE /* UIView+extension.swift in Sources */,
 				203713D329A96975003376A6 /* MenuCell.swift in Sources */,
@@ -1341,15 +1353,16 @@
 				20529EA829A12D38008112CE /* Coordinator.swift in Sources */,
 				20529EB529A132CD008112CE /* TabBarController.swift in Sources */,
 				20529F1729A29D4A008112CE /* CategoriesCollCell.swift in Sources */,
-				20529EB029A12F78008112CE /* HomeViewModel.swift in Sources */,
 				203713C029A93EFA003376A6 /* CurrentTableHeaderCell.swift in Sources */,
 				20529ED629A161F1008112CE /* ProfileViewModel.swift in Sources */,
 				20529EC429A1518C008112CE /* CustomPageViewController.swift in Sources */,
 				2052E2F029A3E1EB00BFA7F0 /* NavigationController.swift in Sources */,
 				0FEEF73E29B8129D00071EBF /* LoginPhoneViewController.swift in Sources */,
 				20529EBE29A1440D008112CE /* ViewController.swift in Sources */,
+				0FEEF76429BF293900071EBF /* HomeViewModel.swift in Sources */,
 				20529EDD29A16239008112CE /* HistoricViewController.swift in Sources */,
 				20529F0E29A29BAE008112CE /* EstablishmentCell.swift in Sources */,
+				0FEEF75B29BF1C9300071EBF /* EstablishmentService.swift in Sources */,
 				0FEEF74229B81D6000071EBF /* UIButton+extension.swift in Sources */,
 				20529E9729A05D9D008112CE /* UIViewController+extension.swift in Sources */,
 				20529E8429A01FD8008112CE /* LoginViewController.swift in Sources */,
@@ -1379,6 +1392,7 @@
 				20529E9329A04A7B008112CE /* UINavigation+extension.swift in Sources */,
 				20529F0029A262AD008112CE /* HistoricDetailBottomCell.swift in Sources */,
 				20529E8729A01FE9008112CE /* LoginViewModel.swift in Sources */,
+				0FCFAD7429C24EF600BB3F87 /* EstablishmentRequest.swift in Sources */,
 				20529EE229A16252008112CE /* HistoricCoordinator.swift in Sources */,
 				20529E9A29A11445008112CE /* PhoneValidationViewController.swift in Sources */,
 				20529EF829A2628B008112CE /* HistoricDetailHeaderCell.swift in Sources */,
@@ -1392,6 +1406,7 @@
 				2052E2E329A3BD2E00BFA7F0 /* NewTableViewController.swift in Sources */,
 				203713B529A934C2003376A6 /* CurrentTableViewModel.swift in Sources */,
 				0FEEF74A29B8C64700071EBF /* LoginService.swift in Sources */,
+				0FEEF75F29BF1D4F00071EBF /* EstablishmentCategoryResponse.swift in Sources */,
 				20529EBC29A14133008112CE /* HomeCoordinator.swift in Sources */,
 				0FEEF74F29B8D10600071EBF /* AFSetup.swift in Sources */,
 				20C694D129970FB6006AE6FB /* SceneDelegate.swift in Sources */,
@@ -1755,6 +1770,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		0FEEF75429BE33AA00071EBF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1767,6 +1790,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0FEEF73829B8075A00071EBF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		0FEEF75529BE33AA00071EBF /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FEEF75429BE33AA00071EBF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		0FEEF75729BE33AA00071EBF /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FEEF75429BE33AA00071EBF /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

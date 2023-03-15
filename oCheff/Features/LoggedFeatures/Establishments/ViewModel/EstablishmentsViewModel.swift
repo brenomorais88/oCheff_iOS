@@ -6,16 +6,32 @@
 //
 
 import Foundation
+import Alamofire
 
 class EstablishmentsViewModel: ViewModel {
     let delegate: HomeCoordinatorProtocol
+    let service: EstablishmentService
     
-    init(delegate: HomeCoordinatorProtocol) {
+    init(delegate: HomeCoordinatorProtocol,
+         service: EstablishmentService) {
         self.delegate = delegate
+        self.service = service
+        
         super.init()
     }
     
     func showEstablishment() {
         self.delegate.showEstablishment()
     }
+    
+    func getEstablishmentCategory(callback: (Bool, [EstablishmentCategoryResponse]?) -> ()) {
+        self.service.getEstablishmentCategory(callback: callback)
+    }
+    
+    func getNearEstablishments(callback: @escaping (Bool, [EstablishmentResponse]?) -> ()) {
+        let params = EstablishmentRequest()
+        self.service.getNearEstablishments(params: params, callback: callback)
+    }
 }
+
+    
