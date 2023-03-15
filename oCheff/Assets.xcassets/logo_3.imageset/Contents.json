@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Logo ocheff branco 1.png",
+      "filename" : "Logo branco.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Logo ocheff branco 2.png",
+      "filename" : "Logo branco@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Logo ocheff branco.png",
+      "filename" : "Logo branco@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

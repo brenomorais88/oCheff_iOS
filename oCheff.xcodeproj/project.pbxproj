@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		05FF110D25C5642C9BD6E6E9 /* Pods_oCheffTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8AD6C72FAC76EF9DCD71A7C /* Pods_oCheffTests.framework */; };
+		0F48FC6D29C28551003B79F5 /* AppCustomLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48FC6B29C28551003B79F5 /* AppCustomLaunchViewController.swift */; };
+		0F48FC6E29C28551003B79F5 /* AppCustomLaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F48FC6C29C28551003B79F5 /* AppCustomLaunchViewController.xib */; };
 		0FCFAD7429C24EF600BB3F87 /* EstablishmentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFAD7329C24EF600BB3F87 /* EstablishmentRequest.swift */; };
 		0FEEF73729B8061B00071EBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FEEF73629B8061A00071EBF /* GoogleService-Info.plist */; };
 		0FEEF73A29B8075A00071EBF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0FEEF73929B8075A00071EBF /* FirebaseAnalytics */; };
@@ -147,6 +149,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F48FC6B29C28551003B79F5 /* AppCustomLaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCustomLaunchViewController.swift; sourceTree = "<group>"; };
+		0F48FC6C29C28551003B79F5 /* AppCustomLaunchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppCustomLaunchViewController.xib; sourceTree = "<group>"; };
 		0FCFAD7329C24EF600BB3F87 /* EstablishmentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstablishmentRequest.swift; sourceTree = "<group>"; };
 		0FEEF73629B8061A00071EBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0FEEF73D29B8129D00071EBF /* LoginPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPhoneViewController.swift; sourceTree = "<group>"; };
@@ -607,6 +611,8 @@
 				20529E9929A11445008112CE /* PhoneValidationViewController.xib */,
 				20529E9C29A1265B008112CE /* SignUpPasswordViewController.swift */,
 				20529E9D29A1265B008112CE /* SignUpPasswordViewController.xib */,
+				0F48FC6B29C28551003B79F5 /* AppCustomLaunchViewController.swift */,
+				0F48FC6C29C28551003B79F5 /* AppCustomLaunchViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1206,6 +1212,7 @@
 				0FEEF74029B812A800071EBF /* LoginPhoneViewController.xib in Resources */,
 				0FEEF73729B8061B00071EBF /* GoogleService-Info.plist in Resources */,
 				203713EB29AA8E7D003376A6 /* OrderCell.xib in Resources */,
+				0F48FC6E29C28551003B79F5 /* AppCustomLaunchViewController.xib in Resources */,
 				2052E2D829A3B88900BFA7F0 /* FavoritosViewController.xib in Resources */,
 				20529EDE29A16239008112CE /* HistoricViewController.xib in Resources */,
 				20529EE729A1685F008112CE /* HistoricCell.xib in Resources */,
@@ -1386,6 +1393,7 @@
 				20C694CF29970FB6006AE6FB /* AppDelegate.swift in Sources */,
 				203713CD29A965F0003376A6 /* MenuViewController.swift in Sources */,
 				20529E8D29A04416008112CE /* UIColor+extension.swift in Sources */,
+				0F48FC6D29C28551003B79F5 /* AppCustomLaunchViewController.swift in Sources */,
 				203713F029AA922A003376A6 /* WarningViewController.swift in Sources */,
 				203713F629AAA05C003376A6 /* CloseAccountViewModel.swift in Sources */,
 				20529ED429A161E2008112CE /* ProfileCoordinator.swift in Sources */,

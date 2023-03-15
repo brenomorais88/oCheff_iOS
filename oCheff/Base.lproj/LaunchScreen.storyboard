@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,30 +11,29 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="40z-ho-SXD">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="background_launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="40z-ho-SXD">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_3" translatesAutoresizingMaskIntoConstraints="NO" id="0VJ-sQ-Pgw">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_3" translatesAutoresizingMaskIntoConstraints="NO" id="NhW-Ir-gqU">
                                 <rect key="frame" x="147" y="388" width="120" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="WM6-yq-Gej"/>
-                                    <constraint firstAttribute="width" constant="120" id="hCX-sE-SLk"/>
+                                    <constraint firstAttribute="width" constant="120" id="BgV-C6-T1b"/>
+                                    <constraint firstAttribute="height" constant="120" id="PNu-3d-rto"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.91764705882352937" green="0.1764705882352941" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="40z-ho-SXD" secondAttribute="bottom" constant="-34" id="B5U-RJ-Rxv"/>
-                            <constraint firstItem="0VJ-sQ-Pgw" firstAttribute="centerX" secondItem="40z-ho-SXD" secondAttribute="centerX" id="EF1-bl-kxs"/>
-                            <constraint firstItem="40z-ho-SXD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LPI-hH-X6i"/>
-                            <constraint firstItem="0VJ-sQ-Pgw" firstAttribute="centerY" secondItem="40z-ho-SXD" secondAttribute="centerY" id="PPg-ih-co9"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="40z-ho-SXD" secondAttribute="trailing" id="lnX-la-mLk"/>
-                            <constraint firstItem="40z-ho-SXD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-48" id="ncE-DS-4Qq"/>
+                            <constraint firstItem="NhW-Ir-gqU" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="8St-1J-GfJ"/>
+                            <constraint firstAttribute="bottom" secondItem="40z-ho-SXD" secondAttribute="bottom" id="B5U-RJ-Rxv"/>
+                            <constraint firstItem="40z-ho-SXD" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="LPI-hH-X6i"/>
+                            <constraint firstAttribute="trailing" secondItem="40z-ho-SXD" secondAttribute="trailing" id="lnX-la-mLk"/>
+                            <constraint firstItem="40z-ho-SXD" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ncE-DS-4Qq"/>
+                            <constraint firstItem="NhW-Ir-gqU" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="sbm-nQ-X8T"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -45,7 +43,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background_launchscreen" width="375" height="812"/>
-        <image name="logo_3" width="57.5" height="55.5"/>
+        <image name="background_launchscreen" width="187.5" height="406"/>
+        <image name="logo_3" width="115" height="111"/>
     </resources>
 </document>

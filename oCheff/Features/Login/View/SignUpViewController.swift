@@ -54,10 +54,11 @@ class SignUpViewController: ViewController {
             return nil
         }
         
-        let user = CreateUserRequest(deviceID: "+55\(phone)",
+        let deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+        let user = CreateUserRequest(deviceID: deviceID,
                                      name: name,
                                      surName: surName,
-                                     phone: phone,
+                                     phone: "+55\(phone)",
                                      email: mail)
         
         return user

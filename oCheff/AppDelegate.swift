@@ -52,17 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupRoot() {
-        let userLogin: Bool = true
-        
-        if userLogin {
-            setRootLoggedUser()
-            
-        } else {
-            setRootNotLoggedUser()
-        }
-
-//            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//            appDelegate.setRootLoggedUser()
+        let vc = AppCustomLaunchViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        window?.rootViewController = nav
+        window?.makeKeyAndVisible()
     }
     
     func setRootNotLoggedUser() {

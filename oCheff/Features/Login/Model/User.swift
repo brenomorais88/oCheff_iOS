@@ -15,18 +15,18 @@ struct CreateUserRequest: Encodable {
     let phone: String
     let email: String
     let document: String?
-    let photo: Data?
+    let photo: String?
     let ggKey: String?
     let fbKey: String?
     
-    init(userType: String = "1",
+    init(userType: String = "0",
          deviceID: String,
          name: String,
          surName: String,
          phone: String,
          email: String,
          document: String? = nil,
-         photo: Data? = nil,
+         photo: String? = nil,
          ggKey: String? = nil,
          fbKey: String? = nil) {
         
@@ -43,17 +43,30 @@ struct CreateUserRequest: Encodable {
     }
     
     private enum CodingKeys: String, CodingKey {
-        case userType = "user_type"
-        case deviceID = "device_id"
+        case userType = "type"
+        case deviceID = "device"
         case name = "name"
-        case surName = "sur_name"
-        case phone = "phone"
+        case surName = "surname"
+        case phone = "phoneNumber"
         case email = "email"
         case document = "document"
         case photo = "photo"
-        case ggKey = "gg_key"
-        case fbKey = "fb_key"
+        case ggKey = "googleKey"
+        case fbKey = "facebookKey"
     }
+    
+//    {
+//      "type": 0,
+//      "device": "string",
+//      "name": "string",
+//      "surname": "string",
+//      "phoneNumber": 0,
+//      "email": "string",
+//      "document": "string",
+//      "photo": "string",
+//      "facebookKey": "string",
+//      "googleKey": "string"
+//    }
 }
 
 struct UserResponse: Decodable {
