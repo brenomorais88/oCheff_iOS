@@ -74,7 +74,7 @@ class SignUpViewController: ViewController {
                 self.getSessionToken(phone: user.phone)
                 
             } else {
-                print("Show Error")
+                self.showFullScreenError(delegate: self)
             }
         })
     }
@@ -89,7 +89,7 @@ class SignUpViewController: ViewController {
                 Defaults.shared.saveSessionPhone(phone: phone)
                 
             } else {
-                print("Show Error")
+                self.showFullScreenError(delegate: self)
             }
         })
     }

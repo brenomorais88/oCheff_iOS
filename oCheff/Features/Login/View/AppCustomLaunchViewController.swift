@@ -29,13 +29,10 @@ class AppCustomLaunchViewController: UIViewController {
     private func checkUser() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-//        guard let currentPhone = Defaults.shared.getSessionPhone() else {
-//            appDelegate.setRootNotLoggedUser()
-//            return
-//        }
-//
-        let currentPhone = "5511981797687"
-        print(currentPhone)
+        guard let currentPhone = Defaults.shared.getSessionPhone() else {
+            appDelegate.setRootNotLoggedUser()
+            return
+        }
         
         let params = CheckTokenRequest(phone: currentPhone)
         

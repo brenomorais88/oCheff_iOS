@@ -54,7 +54,7 @@ class ProfileViewController: ViewController {
                 self.loadUserData(user: user)
                 
             } else {
-                print("show error")
+                self.showFullScreenError(delegate: self)
             }
         })
     }

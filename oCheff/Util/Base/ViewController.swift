@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     let loadingVC = LoadingViewController()
+    var errorVC: FullScreenErrorViewController? = nil
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,5 +58,38 @@ class ViewController: UIViewController {
         DispatchQueue.main.async {
             self.loadingVC.dismiss(animated: true)
         }
+    }
+    
+    func showFullScreenError(titleText: String = "Ops!",
+                             message: String = "Algo deu errado",
+                             showSecondaryButton: Bool = false,
+                             buttonText: String = "voltar",
+                             secondaryButtonText: String = "",
+                             delegate: FullScreenErrorDelegate?) {
+        
+        errorVC = FullScreenErrorViewController(titleText: titleText,
+                                                message: message,
+                                                showSecondaryButton: showSecondaryButton,
+                                                buttonText: buttonText,
+                                                secondaryButtonText: secondaryButtonText,
+                                                delegate: delegate)
+        
+        errorVC?.modalPresentationStyle = .overFullScreen
+        errorVC?.modalTransitionStyle = .crossDissolve
+        
+        if let vc = errorVC {
+            self.present(vc, animated: false, completion: nil)
+        }
+    }
+    
+    func dissmissFullScreenError() {
+        errorVC?.dismiss(animated: false)
+        errorVC = nil
+    }
+}
+
+extension ViewController: FullScreenErrorDelegate {
+    func didTapFirstButton() {
+        self.dissmissFullScreenError()
     }
 }

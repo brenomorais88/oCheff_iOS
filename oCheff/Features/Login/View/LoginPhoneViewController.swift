@@ -59,10 +59,9 @@ class LoginPhoneViewController: ViewController {
             
             self.dismissLoading()
             
-            if let error = error {
-                self.showWarning(titleText: "Atenção",
-                                 message: error.localizedDescription,
-                                 delegate: self)
+            if error != nil {
+                self.showFullScreenError(message: "Erro no login com o Google",
+                                         delegate: self)
               return
             }
             
@@ -85,17 +84,15 @@ class LoginPhoneViewController: ViewController {
         
         GIDSignIn.sharedInstance.signIn(withPresenting: self) { [unowned self] result, error in
             if error != nil {
-                self.showWarning(titleText: "erro",
-                                 message: "Erro no login do GG",
-                                 delegate: self)
+                self.showFullScreenError(message: "Erro no login com o Google",
+                                         delegate: self)
                 return
             }
 
             guard let user = result?.user,
                   let idToken = user.idToken?.tokenString else {
-                self.showWarning(titleText: "erro",
-                                 message: "Erro no login do GG",
-                                 delegate: self)
+                self.showFullScreenError(message: "Erro no login com o Google",
+                                         delegate: self)
                 return
             }
             
@@ -109,9 +106,8 @@ class LoginPhoneViewController: ViewController {
     func doGGLogin(credential: AuthCredential) {
         Auth.auth().signIn(with: credential) { result, error in
             if error != nil {
-                self.showWarning(titleText: "erro",
-                                 message: "Erro no login do GG",
-                                 delegate: self)
+                self.showFullScreenError(message: "Erro no login com o Google",
+                                         delegate: self)
                 return
             }
         }
@@ -121,13 +117,13 @@ class LoginPhoneViewController: ViewController {
     
     @IBAction func signIn(_ sender: Any) {
         if self.phoneTextField?.text?.count ?? 0 < 15 {
-            
+
             self.showWarning(titleText: "Atenção",
                              message: "preencha um numero de celular válido",
                              delegate: self)
             return
         }
-        
+
         sendValidationCode()
     }
     

@@ -63,7 +63,7 @@ class EstablishmentsViewController: ViewController {
                 self.categoriesColection?.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .left)
                 self.loadEstablishments()
             } else {
-                print("MOSTRAR ERRO")
+                self.showFullScreenError(delegate: self)
             }
         })
     }
@@ -75,7 +75,7 @@ class EstablishmentsViewController: ViewController {
                 self.establishmentsTV?.reloadData()
                 self.dismissLoading()
             } else {
-                print("MOSTRAR ERRO")
+                self.showFullScreenError(delegate: self)
             }
         })
     }

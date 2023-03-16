@@ -34,11 +34,11 @@ extension EstablishmentService: EstablishmentServiceProtocol {
                     callback(true, parsedData)
                     
                 } catch {
-                    print("erro generico")
+                    callback(false, nil)
                 }
 
-                case let .failure(error):
-                print(error)
+                case .failure:
+                    callback(false, nil)
             }
         }
     }

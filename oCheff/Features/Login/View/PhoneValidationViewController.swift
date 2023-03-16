@@ -134,7 +134,7 @@ class PhoneValidationViewController: ViewController {
             if succsess {
                 self.getSessionToken(phone: phone)
             } else {
-                print("error")
+                self.showFullScreenError(delegate: self)
             }
         })
     }
@@ -149,7 +149,7 @@ class PhoneValidationViewController: ViewController {
                 appDelegate.setRootLoggedUser()
                 
             } else {
-                print("error")
+                self.showFullScreenError(delegate: self)
             }
         })
     }
@@ -216,9 +216,7 @@ class PhoneValidationViewController: ViewController {
             }
           )
         } else {
-            self.showWarning(titleText: "Erro",
-                             message: authError.localizedDescription,
-                             delegate: self)
+            self.showFullScreenError(delegate: self)
           return
         }
     }

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FullScreenErrorViewController" customModule="oCheff" customModuleProvider="target">
+            <connections>
+                <outlet property="errorMessage" destination="zcO-tG-Wms" id="XB9-zb-rhX"/>
+                <outlet property="errorTitle" destination="zcO-tG-Wms" id="d01-Fu-2GR"/>
+                <outlet property="firstButton" destination="HfG-fI-e13" id="BCi-5z-zqE"/>
+                <outlet property="secondaryButton" destination="O4N-rD-8Yb" id="lxR-SQ-9I5"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="87P-IR-3xd">
+                    <rect key="frame" x="24" y="702" width="345" height="116"/>
+                    <subviews>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HfG-fI-e13">
+                            <rect key="frame" x="0.0" y="0.0" width="345" height="50"/>
+                            <color key="backgroundColor" red="0.027450980390000001" green="0.043137254899999998" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="sWh-bs-7ST"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Aplicar">
+                                <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
+                            </buttonConfiguration>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="tapFirstButton:" destination="-1" eventType="touchUpInside" id="10k-dQ-4cw"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4N-rD-8Yb">
+                            <rect key="frame" x="0.0" y="66" width="345" height="50"/>
+                            <color key="backgroundColor" red="0.027450980390000001" green="0.043137254899999998" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="fEL-Sg-hID"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Aplicar">
+                                <fontDescription key="titleFontDescription" type="boldSystem" pointSize="14"/>
+                            </buttonConfiguration>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="tapSecondButton:" destination="-1" eventType="touchUpInside" id="RcU-Mh-KNP"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error_image" translatesAutoresizingMaskIntoConstraints="NO" id="cpJ-5Q-jZc">
+                    <rect key="frame" x="97" y="159" width="199" height="155"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="199" id="4qU-lj-qvB"/>
+                        <constraint firstAttribute="width" secondItem="cpJ-5Q-jZc" secondAttribute="height" multiplier="199:155" id="gpj-fP-eun"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ops!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SM7-fO-I8K">
+                    <rect key="frame" x="20" y="394" width="353" height="48"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="40"/>
+                    <color key="textColor" red="0.91764705879999997" green="0.1764705882" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Algo de errado aconteceu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zcO-tG-Wms">
+                    <rect key="frame" x="20" y="458" width="353" height="20.333333333333314"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.47450980392156861" green="0.49019607843137253" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="87P-IR-3xd" secondAttribute="bottom" id="2I1-0k-jfC"/>
+                <constraint firstItem="cpJ-5Q-jZc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="DFs-DS-e4o"/>
+                <constraint firstItem="87P-IR-3xd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="DwJ-2v-4LY"/>
+                <constraint firstItem="cpJ-5Q-jZc" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="PJP-Ay-O2U"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="87P-IR-3xd" secondAttribute="trailing" constant="24" id="Ulu-ue-EPf"/>
+                <constraint firstItem="SM7-fO-I8K" firstAttribute="top" secondItem="cpJ-5Q-jZc" secondAttribute="bottom" constant="80" id="VPA-NT-DF1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="SM7-fO-I8K" secondAttribute="trailing" constant="20" id="ZOb-T4-i1K"/>
+                <constraint firstItem="zcO-tG-Wms" firstAttribute="top" secondItem="SM7-fO-I8K" secondAttribute="bottom" constant="16" id="f02-dO-mVG"/>
+                <constraint firstItem="zcO-tG-Wms" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="j0S-Uw-2ba"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zcO-tG-Wms" secondAttribute="trailing" constant="20" id="oGB-4a-z6x"/>
+                <constraint firstItem="SM7-fO-I8K" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="wmt-4v-WLs"/>
+            </constraints>
+            <point key="canvasLocation" x="84.732824427480907" y="19.718309859154932"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="error_image" width="199" height="156"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
