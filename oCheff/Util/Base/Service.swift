@@ -12,6 +12,10 @@ class Service {
     let baseURL: String = "http://webapi.app.br.iron.hostazul.com.br/api/v1"
     let decoder = JSONDecoder()
     
+    let headers: HTTPHeaders = [
+        "Content-Type": "application/json"
+    ]
+    
     init() {
         
     }

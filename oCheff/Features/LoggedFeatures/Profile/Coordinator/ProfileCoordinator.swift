@@ -14,7 +14,8 @@ protocol ProfileCoordinatorProtocol {
 class ProfileCoordinator: Coordinator {
     
     override func didInit() {
-        let viewModel = ProfileViewModel(delegate: self)
+        let service = UserService()
+        let viewModel = ProfileViewModel(delegate: self, service: service)
         self.viewController = ProfileViewController(viewModel: viewModel)
     }
 }

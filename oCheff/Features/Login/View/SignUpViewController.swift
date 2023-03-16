@@ -15,7 +15,7 @@ class SignUpViewController: ViewController {
     @IBOutlet weak var googleView: UIView?
     @IBOutlet weak var fbView: UIView?
     
-    private var service: LoginService? = nil
+    private var service: UserService? = nil
     var phone: String? = nil
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -29,7 +29,7 @@ class SignUpViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupViews()
-        self.service = LoginService()
+        self.service = UserService()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,25 +58,46 @@ class SignUpViewController: ViewController {
         let user = CreateUserRequest(deviceID: deviceID,
                                      name: name,
                                      surName: surName,
-                                     phone: "+55\(phone)",
+                                     phone: "55\(phone)",
                                      email: mail)
         
         return user
     }
     
-    //MARK: actions
-
-    @IBAction func signUp(_ sender: Any) {
+    private func signUp() {
         guard let user = self.createUserModel() else {
             return
         }
         
-        self.service?.signUp(user: user, completion: { user  in
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.setRootLoggedUser()
-//            let vc = PhoneValidationViewController()
-//            self.navigationController?.pushViewController(vc, animated: true)
+        self.service?.signUp(params: user, callback: { created  in
+            if created {
+                self.getSessionToken(phone: user.phone)
+                
+            } else {
+                print("Show Error")
+            }
         })
+    }
+    
+    private func getSessionToken(phone: String) {
+        let params = CheckTokenRequest(phone: phone)
+        
+        self.service?.checkSession(params: params, callback: { success in
+            if success {
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.setRootLoggedUser()
+                Defaults.shared.saveSessionPhone(phone: phone)
+                
+            } else {
+                print("Show Error")
+            }
+        })
+    }
+    
+    //MARK: actions
+
+    @IBAction func signUp(_ sender: Any) {
+        self.signUp()
     }
     
     @IBAction func ggSignUp(_ sender: Any) {

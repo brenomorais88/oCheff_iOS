@@ -11,16 +11,13 @@ import Firebase
 import FirebaseAuth
 import FirebaseCore
 import GoogleSignIn
-//import FBSDKLoginKit
 
 class LoginPhoneViewController: ViewController {
     @IBOutlet weak var googleView: UIView?
     @IBOutlet weak var fbView: UIView?
     @IBOutlet weak var signInBtn: UIButton?
     @IBOutlet weak var phoneTextField: UITextField?
-    
-//    let loginButton = FBSDKLoginButton()
-    
+        
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -32,7 +29,6 @@ class LoginPhoneViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupViews()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +38,6 @@ class LoginPhoneViewController: ViewController {
     
     private func setupViews() {
         self.phoneTextField?.delegate = self
-//        self.loginButton.delegate = self
         googleView?.addBorder()
         fbView?.addBorder()
     }
@@ -54,12 +49,12 @@ class LoginPhoneViewController: ViewController {
         
         self.showLoading()
         
-        let phone = text.clearPhoneString()
+        let phone = "+55\(text.clearPhoneString())"
         Auth.auth().languageCode = "br"
         
         let provider = PhoneAuthProvider.provider()
         
-        provider.verifyPhoneNumber("+55\(phone)",
+        provider.verifyPhoneNumber(phone,
                                    uiDelegate: nil) { verificationID, error in
             
             self.dismissLoading()
@@ -73,7 +68,9 @@ class LoginPhoneViewController: ViewController {
             
             guard let phone = self.phoneTextField?.text else { return }
             
-            UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+            UserDefaults.standard.set(verificationID,
+                                      forKey: "authVerificationID")
+            
             let vc = PhoneValidationViewController()
             vc.phone = phone
             self.navigationController?.pushViewController(vc, animated: true)
@@ -117,8 +114,6 @@ class LoginPhoneViewController: ViewController {
                                  delegate: self)
                 return
             }
-            
-            print(result)
         }
     }
     

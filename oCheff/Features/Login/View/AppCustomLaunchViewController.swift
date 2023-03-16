@@ -8,8 +8,9 @@
 import UIKit
 
 class AppCustomLaunchViewController: UIViewController {
-    private var service: LoginService? = nil
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView?
+    
+    private var service: UserService? = nil
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -21,14 +22,24 @@ class AppCustomLaunchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.service = LoginService()
+        self.service = UserService()
         self.checkUser()
     }
 
     private func checkUser() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
-        self.service?.checkSession(completion: { userLogged in
+//        guard let currentPhone = Defaults.shared.getSessionPhone() else {
+//            appDelegate.setRootNotLoggedUser()
+//            return
+//        }
+//
+        let currentPhone = "5511981797687"
+        print(currentPhone)
+        
+        let params = CheckTokenRequest(phone: currentPhone)
+        
+        self.service?.checkSession(params: params, callback: { userLogged in
             if userLogged {
                 appDelegate.setRootLoggedUser()
             } else {

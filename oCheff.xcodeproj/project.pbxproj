@@ -10,6 +10,12 @@
 		05FF110D25C5642C9BD6E6E9 /* Pods_oCheffTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8AD6C72FAC76EF9DCD71A7C /* Pods_oCheffTests.framework */; };
 		0F48FC6D29C28551003B79F5 /* AppCustomLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48FC6B29C28551003B79F5 /* AppCustomLaunchViewController.swift */; };
 		0F48FC6E29C28551003B79F5 /* AppCustomLaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F48FC6C29C28551003B79F5 /* AppCustomLaunchViewController.xib */; };
+		0F48FC7029C2904E003B79F5 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48FC6F29C2904E003B79F5 /* Defaults.swift */; };
+		0F48FC7229C2ABBC003B79F5 /* UIImage+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48FC7129C2ABBC003B79F5 /* UIImage+extension.swift */; };
+		0F48FC7529C36748003B79F5 /* GetUserFromPhoneRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48FC7429C36748003B79F5 /* GetUserFromPhoneRequest.swift */; };
+		0F48FC7729C3675D003B79F5 /* CreateUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48FC7629C3675D003B79F5 /* CreateUserRequest.swift */; };
+		0F48FC7929C36782003B79F5 /* CheckTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48FC7829C36782003B79F5 /* CheckTokenRequest.swift */; };
+		0F48FC7C29C36ECF003B79F5 /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48FC7B29C36ECF003B79F5 /* UserToken.swift */; };
 		0FCFAD7429C24EF600BB3F87 /* EstablishmentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFAD7329C24EF600BB3F87 /* EstablishmentRequest.swift */; };
 		0FEEF73729B8061B00071EBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FEEF73629B8061A00071EBF /* GoogleService-Info.plist */; };
 		0FEEF73A29B8075A00071EBF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0FEEF73929B8075A00071EBF /* FirebaseAnalytics */; };
@@ -151,6 +157,12 @@
 /* Begin PBXFileReference section */
 		0F48FC6B29C28551003B79F5 /* AppCustomLaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCustomLaunchViewController.swift; sourceTree = "<group>"; };
 		0F48FC6C29C28551003B79F5 /* AppCustomLaunchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppCustomLaunchViewController.xib; sourceTree = "<group>"; };
+		0F48FC6F29C2904E003B79F5 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		0F48FC7129C2ABBC003B79F5 /* UIImage+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extension.swift"; sourceTree = "<group>"; };
+		0F48FC7429C36748003B79F5 /* GetUserFromPhoneRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserFromPhoneRequest.swift; sourceTree = "<group>"; };
+		0F48FC7629C3675D003B79F5 /* CreateUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserRequest.swift; sourceTree = "<group>"; };
+		0F48FC7829C36782003B79F5 /* CheckTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTokenRequest.swift; sourceTree = "<group>"; };
+		0F48FC7B29C36ECF003B79F5 /* UserToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserToken.swift; sourceTree = "<group>"; };
 		0FCFAD7329C24EF600BB3F87 /* EstablishmentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstablishmentRequest.swift; sourceTree = "<group>"; };
 		0FEEF73629B8061A00071EBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0FEEF73D29B8129D00071EBF /* LoginPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPhoneViewController.swift; sourceTree = "<group>"; };
@@ -312,6 +324,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F48FC7329C3672D003B79F5 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				0F48FC7429C36748003B79F5 /* GetUserFromPhoneRequest.swift */,
+				0F48FC7629C3675D003B79F5 /* CreateUserRequest.swift */,
+				0F48FC7829C36782003B79F5 /* CheckTokenRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		0F48FC7A29C367E2003B79F5 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				0FEEF75129BA226300071EBF /* User.swift */,
+				0F48FC7B29C36ECF003B79F5 /* UserToken.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		0FEEF74329B8C3F900071EBF /* ComonUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,7 +371,8 @@
 		0FEEF75029BA225400071EBF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0FEEF75129BA226300071EBF /* User.swift */,
+				0F48FC7A29C367E2003B79F5 /* Response */,
+				0F48FC7329C3672D003B79F5 /* Request */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -666,6 +698,7 @@
 				20529F1929A29EC9008112CE /* String+extension.swift */,
 				203713BB29A93D61003376A6 /* Double+extension.swift */,
 				0FEEF74129B81D6000071EBF /* UIButton+extension.swift */,
+				0F48FC7129C2ABBC003B79F5 /* UIImage+extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -673,6 +706,7 @@
 		20529EA629A12C89008112CE /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				0F48FC6F29C2904E003B79F5 /* Defaults.swift */,
 				20529EA729A12D38008112CE /* Coordinator.swift */,
 				20529EB229A13083008112CE /* ViewModel.swift */,
 				20529EB429A132CD008112CE /* TabBarController.swift */,
@@ -1355,10 +1389,12 @@
 				20529E9029A04994008112CE /* SignUpViewController.swift in Sources */,
 				20529EEF29A24757008112CE /* HistoricDetailViewController.swift in Sources */,
 				203713F929AAA06F003376A6 /* CloseAccountViewController.swift in Sources */,
+				0F48FC7729C3675D003B79F5 /* CreateUserRequest.swift in Sources */,
 				20529EE629A1685F008112CE /* HistoricCell.swift in Sources */,
 				20529EC829A15428008112CE /* AdsPageContentViewController.swift in Sources */,
 				20529EA829A12D38008112CE /* Coordinator.swift in Sources */,
 				20529EB529A132CD008112CE /* TabBarController.swift in Sources */,
+				0F48FC7029C2904E003B79F5 /* Defaults.swift in Sources */,
 				20529F1729A29D4A008112CE /* CategoriesCollCell.swift in Sources */,
 				203713C029A93EFA003376A6 /* CurrentTableHeaderCell.swift in Sources */,
 				20529ED629A161F1008112CE /* ProfileViewModel.swift in Sources */,
@@ -1385,7 +1421,9 @@
 				203713E129A96D99003376A6 /* OrderViewController.swift in Sources */,
 				203713B829A934E8003376A6 /* CurrentTableViewController.swift in Sources */,
 				20529EE029A16246008112CE /* HistoricViewModel.swift in Sources */,
+				0F48FC7929C36782003B79F5 /* CheckTokenRequest.swift in Sources */,
 				20529EAD29A12EC5008112CE /* HomeViewController.swift in Sources */,
+				0F48FC7C29C36ECF003B79F5 /* UserToken.swift in Sources */,
 				0FEEF74629B8C42D00071EBF /* LoadingViewController.swift in Sources */,
 				0FEEF74C29B8CFEB00071EBF /* Service.swift in Sources */,
 				20529F0729A2927E008112CE /* EstablishmentsViewModel.swift in Sources */,
@@ -1416,7 +1454,9 @@
 				0FEEF74A29B8C64700071EBF /* LoginService.swift in Sources */,
 				0FEEF75F29BF1D4F00071EBF /* EstablishmentCategoryResponse.swift in Sources */,
 				20529EBC29A14133008112CE /* HomeCoordinator.swift in Sources */,
+				0F48FC7529C36748003B79F5 /* GetUserFromPhoneRequest.swift in Sources */,
 				0FEEF74F29B8D10600071EBF /* AFSetup.swift in Sources */,
+				0F48FC7229C2ABBC003B79F5 /* UIImage+extension.swift in Sources */,
 				20C694D129970FB6006AE6FB /* SceneDelegate.swift in Sources */,
 				20529F1A29A29ECA008112CE /* String+extension.swift in Sources */,
 				203713BC29A93D61003376A6 /* Double+extension.swift in Sources */,

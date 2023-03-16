@@ -28,7 +28,7 @@ class PhoneValidationViewController: ViewController {
     @IBOutlet weak var phoneText: UILabel?
     
     var phone: String? = nil
-    private var service: LoginService? = nil
+    private var service: UserService? = nil
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -41,7 +41,7 @@ class PhoneValidationViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupViews()
-        self.service = LoginService()
+        self.service = UserService()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,19 +110,54 @@ class PhoneValidationViewController: ViewController {
     }
     
     private func codeValidationOK() {
-        self.service?.signIn { userLogged in
-            self.dismissLoading()
-            
-            if userLogged {
+        checkIfUserExists()
+    }
+    
+    private func checkIfUserExists() {
+        let phone = "55\(self.phone?.clearPhoneString() ?? "")"
+        let params = GetUserFromPhoneRequest(phone: phone)
+        
+        self.service?.getUserFromPhone(params: params,
+                                       callback: { userExists, user in
+            if userExists {
+                self.updateUserDevice(phone: phone)
+                
+            } else {
+                self.dismissLoading()
+                self.showSignUp()
+            }
+        })
+    }
+    
+    private func updateUserDevice(phone: String) {
+        self.service?.updateUserDevice(callback: { succsess in
+            if succsess {
+                self.getSessionToken(phone: phone)
+            } else {
+                print("error")
+            }
+        })
+    }
+    
+    private func getSessionToken(phone: String) {
+        let params = CheckTokenRequest(phone: phone)
+        
+        self.service?.checkSession(params: params, callback: { succsess in
+            if succsess {
+                Defaults.shared.saveSessionPhone(phone: phone)
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.setRootLoggedUser()
                 
             } else {
-                let vc = SignUpViewController()
-                vc.phone = self.phone
-                self.navigationController?.pushViewController(vc, animated: true)
+                print("error")
             }
-        }
+        })
+    }
+    
+    func showSignUp() {
+        let vc = SignUpViewController()
+        vc.phone = self.phone
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func userLoginError(authError: NSError) {

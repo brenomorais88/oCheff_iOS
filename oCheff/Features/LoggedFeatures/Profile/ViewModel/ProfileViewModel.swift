@@ -8,10 +8,19 @@
 import Foundation
 
 class ProfileViewModel: ViewModel {
-    let delegate: ProfileCoordinatorProtocol
     
-    init(delegate: ProfileCoordinatorProtocol) {
+    let delegate: ProfileCoordinatorProtocol
+    let service: UserService
+    
+    init(delegate: ProfileCoordinatorProtocol,
+         service: UserService) {
         self.delegate = delegate
+        self.service = service
         super.init()
+    }
+    
+    func getUserFromPhone(phone: String, callback: @escaping (Bool, User?) -> ()) {
+        let params = GetUserFromPhoneRequest(phone: phone.replacingOccurrences(of: "+", with: ""))
+        self.service.getUserFromPhone(params: params, callback: callback)
     }
 }

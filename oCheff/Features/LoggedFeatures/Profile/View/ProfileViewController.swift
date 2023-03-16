@@ -12,7 +12,11 @@ class ProfileViewController: ViewController {
     @IBOutlet weak var contactStack: UIStackView?
     @IBOutlet weak var preferencesStack: UIStackView?
     @IBOutlet weak var userImage: UIImageView?
-        
+    @IBOutlet weak var userName: UILabel?
+    @IBOutlet weak var userDocument: UILabel?
+    @IBOutlet weak var userPhone: UILabel?
+    @IBOutlet weak var userMail: UILabel?
+    
     var imagePicker = UIImagePickerController()
     let viewModel: ProfileViewModel?
     
@@ -32,6 +36,7 @@ class ProfileViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.loadData()
         self.setupViews()
     }
     
@@ -40,6 +45,34 @@ class ProfileViewController: ViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
     
+    private func loadData() {
+        self.showLoading()
+        guard let phone = Defaults.shared.getSessionPhone() else { return }
+        self.viewModel?.getUserFromPhone(phone: phone, callback: { success, user in
+            self.dismissLoading()
+            if success, let user = user {
+                self.loadUserData(user: user)
+                
+            } else {
+                print("show error")
+            }
+        })
+    }
+    
+    private func loadUserData(user: User) {
+        let name = user.name ?? ""
+        let surName = user.surName ?? ""
+        
+        self.userName?.text = "\(name) \(surName)"
+        self.userDocument?.text = user.document
+        self.userPhone?.text = user.phone
+        self.userMail?.text = user.email
+        
+        if let photo = user.photo {
+            self.userImage?.image = UIImage.base64StringToImage(string: photo)
+        }
+    }
+
     private func setupViews() {
         self.detailsStack?.addBorder()
         self.contactStack?.addBorder()
@@ -92,6 +125,8 @@ class ProfileViewController: ViewController {
     }
     
     @IBAction func logOut(_ sender: Any) {
+        Defaults.shared.cleanSessionPhone()
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.setRootNotLoggedUser()
     }

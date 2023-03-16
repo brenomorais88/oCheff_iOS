@@ -1,8 +1,8 @@
 //
-//  User.swift
+//  CreateUserRequest.swift
 //  oCheff
 //
-//  Created by Breno Morais on 09/03/23.
+//  Created by Breno Morais on 16/03/23.
 //
 
 import Foundation
@@ -19,7 +19,7 @@ struct CreateUserRequest: Encodable {
     let ggKey: String?
     let fbKey: String?
     
-    init(userType: String = "0",
+    init(userType: String = "1",
          deviceID: String,
          name: String,
          surName: String,
@@ -54,27 +54,4 @@ struct CreateUserRequest: Encodable {
         case ggKey = "googleKey"
         case fbKey = "facebookKey"
     }
-    
-//    {
-//      "type": 0,
-//      "device": "string",
-//      "name": "string",
-//      "surname": "string",
-//      "phoneNumber": 0,
-//      "email": "string",
-//      "document": "string",
-//      "photo": "string",
-//      "facebookKey": "string",
-//      "googleKey": "string"
-//    }
-}
-
-struct UserResponse: Decodable {
-    let email: String
-    let password: String
-}
-
-struct User {
-    let email: String
-    let password: String
 }

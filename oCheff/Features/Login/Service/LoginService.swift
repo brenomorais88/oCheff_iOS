@@ -1,5 +1,5 @@
 //
-//  LoginService.swift
+//  UserService.swift
 //  oCheff
 //
 //  Created by Breno Morais on 08/03/23.
@@ -8,68 +8,94 @@
 import Foundation
 import Alamofire
 
-protocol LoginServiceProtocol {
-    func signIn(completion: @escaping (Bool) -> ())
-    func signUp(user: CreateUserRequest, completion: @escaping (Bool) -> ())
-    func checkSession(completion:  @escaping  (Bool) -> ())
-    func logOut(completion:  @escaping  (Bool) -> ())
+protocol UserServiceProtocol {
+    func updateUserDevice(callback: @escaping (Bool) -> ())
+    func signUp(params: CreateUserRequest, callback: @escaping (Bool) -> ())
+    func getUserFromPhone(params: GetUserFromPhoneRequest, callback: @escaping (Bool, User?) -> ())
+    func checkSession(params: CheckTokenRequest, callback:  @escaping  (Bool) -> ())
+    func logOut(callback:  @escaping  (Bool) -> ())
 }
 
-class LoginService: Service {
-}
-
-extension LoginService: LoginServiceProtocol {
-    func signIn(completion: @escaping (Bool) -> ()) {
-        
-        let login = Login(email: "test@test.test", password: "testPassword")
-        
-        AF.request("https://httpbin.org/post",
-                   method: .post,
-                   parameters: login,
-                   encoder: JSONParameterEncoder.default).response { response in
-            
-            switch response.result {
-                case .success:
-                    print("Validation Successful")
-                
-                case let .failure(error):
-                    print(error)
-            }
-        }
-        
-        completion(false)
-    }
+class UserService: Service {
     
-    func signUp(user: CreateUserRequest, completion: @escaping (Bool) -> ()) {
+}
+
+extension UserService: UserServiceProtocol {
+    func signUp(params: CreateUserRequest, callback: @escaping (Bool) -> ()) {
         AF.request("\(self.baseURL)/Users/create",
                    method: .post,
-                   parameters: user,
-                   encoder: JSONParameterEncoder.default).responseDecodable(of: UserResponse.self) { response in
+                   parameters: params,
+                   encoder: URLEncodedFormParameterEncoder.default).response { response in
 
             switch response.result {
-                case .success:
-                    print("Validation Successful")
-                    completion(true)
+            case .success:
+                callback(true)
 
-
-                case let .failure(error):
-                    completion(false)
-                    print(error)
+            case .failure:
+                callback(false)
             }
         }
     }
     
-    func checkSession(completion: @escaping (Bool) -> ()) {
-        completion(true)
+    func getUserFromPhone(params: GetUserFromPhoneRequest, callback: @escaping (Bool, User?) -> ()) {
+        AF.request("\(self.baseURL)/Users/GetByPhoneNumber",
+                   method: .get,
+                   parameters: params,
+                   encoder: URLEncodedFormParameterEncoder.default).response { response in
+
+            switch response.result {
+            case .success:
+                do {
+                    let parsedData = try self.decoder.decode(User.self,
+                                                             from: response.data ?? Data())
+                    callback(true, parsedData)
+                    
+                } catch {
+                    callback(false, nil)
+                }
+
+            case .failure:
+                callback(false, nil)
+            }
+        }
     }
     
-    func logOut(completion: @escaping (Bool) -> ()) {
-        completion(true)
+    // faz login para um usuario ja existente atualizando a combinacao de deviceid + phone
+    func updateUserDevice(callback: @escaping (Bool) -> ()) {
+        let deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
+        print(deviceID)
+        callback(true)
     }
-}
+    
+    
+    // Valida se o deviceID e o phone combinam e gera o token
+    func checkSession(params: CheckTokenRequest, callback:  @escaping  (Bool) -> ()) {
+        AF.request("\(self.baseURL)/Authentication/create/userToken",
+                   method: .post,
+                   parameters: params,
+                   encoder: JSONParameterEncoder.default).response { response in
 
+            switch response.result {
+            case .success:
+                do {
+                    let parsedData = try self.decoder.decode(UserToken.self,
+                                                             from: response.data ?? Data())
+                    
+                    Defaults.shared.saveSessionToken(token: parsedData.token)
+                    callback(true)
 
-struct Login: Encodable {
-    let email: String
-    let password: String
+                } catch {
+                    callback(false)
+                }
+                
+            case .failure:
+                callback(false)
+            }
+        }
+    }
+    
+    //faz logout
+    func logOut(callback: @escaping (Bool) -> ()) {
+        
+    }
 }
