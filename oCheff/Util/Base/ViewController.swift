@@ -10,8 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     let loadingVC = LoadingViewController()
-    var errorVC: FullScreenErrorViewController? = nil
-    
+    var errorView: UIView? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,24 +66,28 @@ class ViewController: UIViewController {
                              secondaryButtonText: String = "",
                              delegate: FullScreenErrorDelegate?) {
         
-        errorVC = FullScreenErrorViewController(titleText: titleText,
+        self.dismissLoading()
+        let errorVC = FullScreenErrorViewController(titleText: titleText,
                                                 message: message,
                                                 showSecondaryButton: showSecondaryButton,
                                                 buttonText: buttonText,
                                                 secondaryButtonText: secondaryButtonText,
                                                 delegate: delegate)
         
-        errorVC?.modalPresentationStyle = .overFullScreen
-        errorVC?.modalTransitionStyle = .crossDissolve
+        errorVC.view.frame = self.view.bounds
+        self.errorView = errorVC.view
+        self.errorView?.backgroundColor = UIColor.white
         
-        if let vc = errorVC {
-            self.present(vc, animated: false, completion: nil)
-        }
+        guard let view = self.errorView else { return }
+        self.view.addSubview(view)
+        self.addChild(errorVC)
+        errorVC.didMove(toParent: self)
     }
     
+    
     func dissmissFullScreenError() {
-        errorVC?.dismiss(animated: false)
-        errorVC = nil
+        errorView?.removeFromSuperview()
+        errorView = nil
     }
 }
 

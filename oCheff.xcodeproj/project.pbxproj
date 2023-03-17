@@ -18,6 +18,8 @@
 		0F48FC7C29C36ECF003B79F5 /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48FC7B29C36ECF003B79F5 /* UserToken.swift */; };
 		0F48FC7F29C39A63003B79F5 /* FullScreenErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48FC7D29C39A63003B79F5 /* FullScreenErrorViewController.swift */; };
 		0F48FC8029C39A63003B79F5 /* FullScreenErrorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F48FC7E29C39A63003B79F5 /* FullScreenErrorViewController.xib */; };
+		0F48FC8229C4CBCB003B79F5 /* UpdateUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48FC8129C4CBCB003B79F5 /* UpdateUserRequest.swift */; };
+		0F48FC8429C4CDA8003B79F5 /* UpdateUserDeviceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F48FC8329C4CDA8003B79F5 /* UpdateUserDeviceRequest.swift */; };
 		0FCFAD7429C24EF600BB3F87 /* EstablishmentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFAD7329C24EF600BB3F87 /* EstablishmentRequest.swift */; };
 		0FEEF73729B8061B00071EBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FEEF73629B8061A00071EBF /* GoogleService-Info.plist */; };
 		0FEEF73A29B8075A00071EBF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0FEEF73929B8075A00071EBF /* FirebaseAnalytics */; };
@@ -167,6 +169,8 @@
 		0F48FC7B29C36ECF003B79F5 /* UserToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserToken.swift; sourceTree = "<group>"; };
 		0F48FC7D29C39A63003B79F5 /* FullScreenErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenErrorViewController.swift; sourceTree = "<group>"; };
 		0F48FC7E29C39A63003B79F5 /* FullScreenErrorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullScreenErrorViewController.xib; sourceTree = "<group>"; };
+		0F48FC8129C4CBCB003B79F5 /* UpdateUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserRequest.swift; sourceTree = "<group>"; };
+		0F48FC8329C4CDA8003B79F5 /* UpdateUserDeviceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserDeviceRequest.swift; sourceTree = "<group>"; };
 		0FCFAD7329C24EF600BB3F87 /* EstablishmentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstablishmentRequest.swift; sourceTree = "<group>"; };
 		0FEEF73629B8061A00071EBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0FEEF73D29B8129D00071EBF /* LoginPhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPhoneViewController.swift; sourceTree = "<group>"; };
@@ -334,6 +338,8 @@
 				0F48FC7429C36748003B79F5 /* GetUserFromPhoneRequest.swift */,
 				0F48FC7629C3675D003B79F5 /* CreateUserRequest.swift */,
 				0F48FC7829C36782003B79F5 /* CheckTokenRequest.swift */,
+				0F48FC8129C4CBCB003B79F5 /* UpdateUserRequest.swift */,
+				0F48FC8329C4CDA8003B79F5 /* UpdateUserDeviceRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1397,6 +1403,7 @@
 				20529F1D29A2A5A6008112CE /* EstablishmentFilterViewController.swift in Sources */,
 				20529EB329A13083008112CE /* ViewModel.swift in Sources */,
 				20529EF229A2476C008112CE /* HistoricDetailViewModel.swift in Sources */,
+				0F48FC8229C4CBCB003B79F5 /* UpdateUserRequest.swift in Sources */,
 				203713CA29A96583003376A6 /* MenuViewModel.swift in Sources */,
 				2052E2D729A3B88900BFA7F0 /* FavoritosViewController.swift in Sources */,
 				2052E2EA29A3C2C400BFA7F0 /* EstablishmentDetailViewModel.swift in Sources */,
@@ -1421,6 +1428,7 @@
 				20529ED429A161E2008112CE /* ProfileCoordinator.swift in Sources */,
 				20529E9329A04A7B008112CE /* UINavigation+extension.swift in Sources */,
 				20529F0029A262AD008112CE /* HistoricDetailBottomCell.swift in Sources */,
+				0F48FC8429C4CDA8003B79F5 /* UpdateUserDeviceRequest.swift in Sources */,
 				20529E8729A01FE9008112CE /* LoginViewModel.swift in Sources */,
 				0FCFAD7429C24EF600BB3F87 /* EstablishmentRequest.swift in Sources */,
 				20529EE229A16252008112CE /* HistoricCoordinator.swift in Sources */,

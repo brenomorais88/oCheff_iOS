@@ -11,6 +11,6 @@ struct GetUserFromPhoneRequest: Encodable {
     let phone: String
     
     private enum CodingKeys: String, CodingKey {
-        case phone = "phoneNumber"
+        case phone = "number"
     }
 }

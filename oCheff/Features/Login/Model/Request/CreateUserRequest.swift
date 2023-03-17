@@ -6,32 +6,29 @@
 //
 
 import Foundation
+import UIKit
 
 struct CreateUserRequest: Encodable {
-    let userType: String
-    let deviceID: String
+    let userType: Int = 1
+    let device: String = UIDevice.current.identifierForVendor?.uuidString ?? ""
     let name: String
     let surName: String
     let phone: String
     let email: String
-    let document: String?
-    let photo: String?
-    let ggKey: String?
-    let fbKey: String?
+    let document: String
+    let photo: String
+    let fbKey: String
+    let ggKey: String
     
-    init(userType: String = "1",
-         deviceID: String,
-         name: String,
+    init(name: String,
          surName: String,
          phone: String,
          email: String,
-         document: String? = nil,
-         photo: String? = nil,
-         ggKey: String? = nil,
-         fbKey: String? = nil) {
+         document: String = "",
+         photo: String = "",
+         fbKey: String = "",
+         ggKey: String = "") {
         
-        self.userType = userType
-        self.deviceID = deviceID
         self.name = name
         self.surName = surName
         self.phone = phone
@@ -43,15 +40,29 @@ struct CreateUserRequest: Encodable {
     }
     
     private enum CodingKeys: String, CodingKey {
-        case userType = "type"
-        case deviceID = "device"
+        case userType = "type" 
+        case device = "device"
         case name = "name"
         case surName = "surname"
         case phone = "phoneNumber"
         case email = "email"
         case document = "document"
         case photo = "photo"
-        case ggKey = "googleKey"
         case fbKey = "facebookKey"
+        case ggKey = "googleKey"
     }
+    
+    
+//    {
+//      "type": 1,
+//      "device": "string",
+//      "name": "string",
+//      "surname": "string",
+//      "phoneNumber": "5511982743434",
+//      "email": "teste@teste.com",
+//      "document": "string",
+//      "photo": "string",
+//      "facebookKey": "string",
+//      "googleKey": "string"
+//    }
 }

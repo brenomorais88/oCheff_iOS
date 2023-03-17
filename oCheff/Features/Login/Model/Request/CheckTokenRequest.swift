@@ -10,8 +10,7 @@ import UIKit
 
 struct CheckTokenRequest: Encodable {
     let phone: String
-//    let device: String = UIDevice.current.identifierForVendor?.uuidString ?? ""
-    let device: String = "xxxexe"
+    let device: String = UIDevice.current.identifierForVendor?.uuidString ?? ""
     
     private enum CodingKeys: String, CodingKey {
         case phone = "phoneNumber"

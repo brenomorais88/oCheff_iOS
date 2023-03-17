@@ -119,8 +119,8 @@ class PhoneValidationViewController: ViewController {
         
         self.service?.getUserFromPhone(params: params,
                                        callback: { userExists, user in
-            if userExists {
-                self.updateUserDevice(phone: phone)
+            if userExists, let id = user?.id {
+                self.updateUserDevice(id: id, phone: phone)
                 
             } else {
                 self.dismissLoading()
@@ -129,8 +129,10 @@ class PhoneValidationViewController: ViewController {
         })
     }
     
-    private func updateUserDevice(phone: String) {
-        self.service?.updateUserDevice(callback: { succsess in
+    private func updateUserDevice(id: Int, phone: String) {
+        let params = UpdateUserDeviceRequest(id: id, phone: phone)
+        
+        self.service?.updateUserDevice(params: params, callback: { succsess in
             if succsess {
                 self.getSessionToken(phone: phone)
             } else {

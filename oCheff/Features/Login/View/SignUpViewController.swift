@@ -54,9 +54,7 @@ class SignUpViewController: ViewController {
             return nil
         }
         
-        let deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
-        let user = CreateUserRequest(deviceID: deviceID,
-                                     name: name,
+        let user = CreateUserRequest(name: name,
                                      surName: surName,
                                      phone: "55\(phone)",
                                      email: mail)
@@ -69,9 +67,9 @@ class SignUpViewController: ViewController {
             return
         }
         
-        self.service?.signUp(params: user, callback: { created  in
-            if created {
-                self.getSessionToken(phone: user.phone)
+        self.service?.signUp(params: user, callback: { created, newUser  in
+            if created, let userPhone = newUser?.phone {
+                self.getSessionToken(phone: userPhone)
                 
             } else {
                 self.showFullScreenError(delegate: self)

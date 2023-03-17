@@ -9,8 +9,8 @@ import Foundation
 import Alamofire
 
 protocol UserServiceProtocol {
-    func updateUserDevice(callback: @escaping (Bool) -> ())
-    func signUp(params: CreateUserRequest, callback: @escaping (Bool) -> ())
+    func updateUserDevice(params: UpdateUserDeviceRequest, callback: @escaping (Bool) -> ())
+    func signUp(params: CreateUserRequest, callback: @escaping (Bool, User?) -> ())
     func getUserFromPhone(params: GetUserFromPhoneRequest, callback: @escaping (Bool, User?) -> ())
     func checkSession(params: CheckTokenRequest, callback:  @escaping  (Bool) -> ())
     func logOut(callback:  @escaping  (Bool) -> ())
@@ -21,18 +21,52 @@ class UserService: Service {
 }
 
 extension UserService: UserServiceProtocol {
-    func signUp(params: CreateUserRequest, callback: @escaping (Bool) -> ()) {
-        AF.request("\(self.baseURL)/Users/create",
+    // Valida se o deviceID e o phone combinam e gera o token
+    func checkSession(params: CheckTokenRequest, callback: @escaping (Bool) -> ()) {
+        AF.request("\(self.baseURL)/Authentication/create/userToken",
                    method: .post,
                    parameters: params,
-                   encoder: URLEncodedFormParameterEncoder.default).response { response in
+                   encoder: JSONParameterEncoder.default).response { response in
 
             switch response.result {
             case .success:
-                callback(true)
+                do {
+                    let parsedData = try self.decoder.decode(UserToken.self,
+                                                             from: response.data ?? Data())
+                    
+                    Defaults.shared.saveSessionToken(token: parsedData.token)
+                    callback(true)
 
+                } catch {
+                    callback(false)
+                }
+                
             case .failure:
                 callback(false)
+            }
+        }
+    }
+    
+    //cadastro de novo usuario
+    func signUp(params: CreateUserRequest, callback: @escaping (Bool, User?) -> ()) {
+        AF.request("\(self.baseURL)/Users/create",
+                   method: .post,
+                   parameters: params,
+                   encoder: JSONParameterEncoder.default).response { response in
+
+            switch response.result {
+            case .success:
+                do {
+                    let parsedData = try self.decoder.decode(User.self,
+                                                             from: response.data ?? Data())
+                    callback(true, parsedData)
+                    
+                } catch {
+                    callback(false, nil)
+                }
+
+            case .failure:
+                callback(false, nil)
             }
         }
     }
@@ -61,33 +95,16 @@ extension UserService: UserServiceProtocol {
     }
     
     // faz login para um usuario ja existente atualizando a combinacao de deviceid + phone
-    func updateUserDevice(callback: @escaping (Bool) -> ()) {
-        let deviceID = UIDevice.current.identifierForVendor?.uuidString ?? ""
-        print(deviceID)
-        callback(true)
-    }
-    
-    
-    // Valida se o deviceID e o phone combinam e gera o token
-    func checkSession(params: CheckTokenRequest, callback:  @escaping  (Bool) -> ()) {
-        AF.request("\(self.baseURL)/Authentication/create/userToken",
-                   method: .post,
+    func updateUserDevice(params: UpdateUserDeviceRequest, callback: @escaping (Bool) -> ()) {
+        AF.request("\(self.baseURL)/Users/update",
+                   method: .patch,
                    parameters: params,
                    encoder: JSONParameterEncoder.default).response { response in
 
             switch response.result {
             case .success:
-                do {
-                    let parsedData = try self.decoder.decode(UserToken.self,
-                                                             from: response.data ?? Data())
-                    
-                    Defaults.shared.saveSessionToken(token: parsedData.token)
-                    callback(true)
+                callback(true)
 
-                } catch {
-                    callback(false)
-                }
-                
             case .failure:
                 callback(false)
             }
