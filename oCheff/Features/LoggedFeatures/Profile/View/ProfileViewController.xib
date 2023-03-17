@@ -46,10 +46,10 @@
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e28-E6-kSe">
-                                    <rect key="frame" x="233" y="131" width="24" height="24"/>
+                                    <rect key="frame" x="219" y="117" width="50" height="50"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="24" id="88t-5B-oUe"/>
-                                        <constraint firstAttribute="height" constant="24" id="9CF-Kg-3Y7"/>
+                                        <constraint firstAttribute="width" constant="50" id="88t-5B-oUe"/>
+                                        <constraint firstAttribute="height" constant="50" id="9CF-Kg-3Y7"/>
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="profile_image_button"/>
@@ -437,7 +437,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="zTZ-kv-GFE" firstAttribute="top" secondItem="Sct-ni-lFR" secondAttribute="bottom" constant="16" id="0oq-mV-lni"/>
-                                <constraint firstItem="e28-E6-kSe" firstAttribute="leading" secondItem="Cbe-OA-KXg" secondAttribute="trailing" constant="-24" id="65D-4D-IR7"/>
+                                <constraint firstItem="e28-E6-kSe" firstAttribute="leading" secondItem="Cbe-OA-KXg" secondAttribute="trailing" constant="-38" id="65D-4D-IR7"/>
                                 <constraint firstItem="ie1-pP-XKM" firstAttribute="top" secondItem="zTZ-kv-GFE" secondAttribute="bottom" constant="30" id="8gk-Ot-hVz"/>
                                 <constraint firstItem="3tN-6B-1Kd" firstAttribute="top" secondItem="Cbe-OA-KXg" secondAttribute="bottom" constant="32" id="IXb-D8-T2R"/>
                                 <constraint firstItem="s9e-Td-4Gz" firstAttribute="leading" secondItem="ek4-5U-Pmg" secondAttribute="leading" constant="24" id="Id9-N7-m8t"/>
@@ -461,13 +461,13 @@
                                 <constraint firstItem="wck-AX-z6H" firstAttribute="leading" secondItem="ek4-5U-Pmg" secondAttribute="leading" constant="24" id="vRp-90-pBm"/>
                                 <constraint firstItem="kh7-ma-3Ji" firstAttribute="leading" secondItem="ek4-5U-Pmg" secondAttribute="leading" constant="24" id="weK-uD-6W5"/>
                                 <constraint firstItem="wck-AX-z6H" firstAttribute="top" secondItem="3tN-6B-1Kd" secondAttribute="bottom" constant="16" id="wnA-Ee-6fP"/>
-                                <constraint firstItem="e28-E6-kSe" firstAttribute="top" secondItem="Cbe-OA-KXg" secondAttribute="bottom" constant="-24" id="yif-8K-9M6"/>
+                                <constraint firstItem="e28-E6-kSe" firstAttribute="top" secondItem="Cbe-OA-KXg" secondAttribute="bottom" constant="-38" id="yif-8K-9M6"/>
                             </constraints>
                         </view>
                     </subviews>
                     <constraints>
                         <constraint firstItem="ek4-5U-Pmg" firstAttribute="top" secondItem="eb9-15-Fga" secondAttribute="top" id="o3j-Df-qRb"/>
-                        <constraint firstAttribute="bottom" secondItem="ek4-5U-Pmg" secondAttribute="bottom" id="phq-GX-CRB"/>
+                        <constraint firstAttribute="bottom" secondItem="ek4-5U-Pmg" secondAttribute="bottom" constant="87.5" id="phq-GX-CRB"/>
                         <constraint firstItem="ek4-5U-Pmg" firstAttribute="width" secondItem="eb9-15-Fga" secondAttribute="width" id="sM1-vL-gSn"/>
                         <constraint firstAttribute="trailing" secondItem="ek4-5U-Pmg" secondAttribute="trailing" id="wg7-cd-2wf"/>
                         <constraint firstItem="ek4-5U-Pmg" firstAttribute="leading" secondItem="eb9-15-Fga" secondAttribute="leading" id="yjQ-GV-0bc"/>

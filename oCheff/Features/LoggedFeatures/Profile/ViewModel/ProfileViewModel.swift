@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ProfileViewModel: ViewModel {
     
@@ -23,4 +24,19 @@ class ProfileViewModel: ViewModel {
         let params = GetUserFromPhoneRequest(phone: phone.replacingOccurrences(of: "+", with: ""))
         self.service.getUserFromPhone(params: params, callback: callback)
     }
+    
+    func saveUserImage(image: UIImage, callback: @escaping (Bool) -> ()) {
+        guard let imgString = image.resizeWithWidth(width: 100)?.toBase64String() else {
+            return
+        }
+        
+        let params = UpdateUserImageRequest(image: imgString)
+        self.service.updateUserImage(params: params, callback: callback)
+    }
+    
+    func deleteUserImage(callback: @escaping (Bool) -> ()) {
+        let params = UpdateUserImageRequest(image: "empty")
+        self.service.updateUserImage(params: params, callback: callback)
+    }
+    
 }

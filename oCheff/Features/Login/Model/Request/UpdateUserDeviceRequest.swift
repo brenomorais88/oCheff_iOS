@@ -27,3 +27,17 @@ struct UpdateUserDeviceRequest: Encodable {
     }
 }
 
+struct UpdateUserImageRequest: Encodable {
+    let id: Int = Defaults.shared.getUserID()
+    let image: String
+    
+    init(image: String) {
+        self.image = image
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case image = "photo"
+    }
+}
+

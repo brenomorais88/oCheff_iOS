@@ -60,16 +60,24 @@ class ProfileViewController: ViewController {
     }
     
     private func loadUserData(user: User) {
+        if let photo = user.photo, photo != "" {
+            guard let image = UIImage.base64StringToImage(string: photo) else {
+                return
+            }
+            self.userImage?.image = image
+        }
+        
         let name = user.name ?? ""
         let surName = user.surName ?? ""
         
-        self.userName?.text = "\(name) \(surName)"
-        self.userDocument?.text = user.document
-        self.userPhone?.text = user.phone
+        self.userName?.text = "\(name) \(surName)".capitalized
         self.userMail?.text = user.email
+        self.userPhone?.text = user.phone?.applyPhoneMask(pattern: "+## (##) #####-####")
         
-        if let photo = user.photo {
-            self.userImage?.image = UIImage.base64StringToImage(string: photo)
+        if user.document != nil && user.document != "" {
+            self.userDocument?.text = user.document
+        } else {
+            self.userDocument?.superview?.removeFromSuperview()
         }
     }
 
@@ -89,6 +97,11 @@ class ProfileViewController: ViewController {
     }
     
     private func deleteImage() {
+        self.viewModel?.deleteUserImage(callback: { success in
+            if !success {
+                print("TRATAR_ERRO")
+            }
+        })
         userImage?.image = UIImage(named: "user_placeholder")
     }
     
@@ -136,6 +149,11 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             userImage?.image = image
+            self.viewModel?.saveUserImage(image: image, callback: { success in
+                if !success {
+                    print("TRATAR_ERRO")
+                }
+            })
         }
 
         picker.dismiss(animated: true, completion: nil);

@@ -10,6 +10,7 @@ import Alamofire
 
 protocol UserServiceProtocol {
     func updateUserDevice(params: UpdateUserDeviceRequest, callback: @escaping (Bool) -> ())
+    func updateUserImage(params: UpdateUserImageRequest, callback: @escaping (Bool) -> ())
     func signUp(params: CreateUserRequest, callback: @escaping (Bool, User?) -> ())
     func getUserFromPhone(params: GetUserFromPhoneRequest, callback: @escaping (Bool, User?) -> ())
     func checkSession(params: CheckTokenRequest, callback:  @escaping  (Bool) -> ())
@@ -35,13 +36,17 @@ extension UserService: UserServiceProtocol {
                                                              from: response.data ?? Data())
                     
                     Defaults.shared.saveSessionToken(token: parsedData.token)
+                    Defaults.shared.saveUserId(id: parsedData.user.id)
+                    
                     callback(true)
 
                 } catch {
+                    Defaults.shared.cleanSessionPhone()
                     callback(false)
                 }
                 
             case .failure:
+                Defaults.shared.cleanSessionPhone()
                 callback(false)
             }
         }
@@ -96,6 +101,23 @@ extension UserService: UserServiceProtocol {
     
     // faz login para um usuario ja existente atualizando a combinacao de deviceid + phone
     func updateUserDevice(params: UpdateUserDeviceRequest, callback: @escaping (Bool) -> ()) {
+        AF.request("\(self.baseURL)/Users/update",
+                   method: .patch,
+                   parameters: params,
+                   encoder: JSONParameterEncoder.default).response { response in
+
+            switch response.result {
+            case .success:
+                callback(true)
+
+            case .failure:
+                callback(false)
+            }
+        }
+    }
+    
+    //update na imagem do user
+    func updateUserImage(params: UpdateUserImageRequest, callback: @escaping (Bool) -> ()) {
         AF.request("\(self.baseURL)/Users/update",
                    method: .patch,
                    parameters: params,
