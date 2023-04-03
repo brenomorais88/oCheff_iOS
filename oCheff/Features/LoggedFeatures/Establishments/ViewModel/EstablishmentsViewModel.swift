@@ -25,8 +25,8 @@ class EstablishmentsViewModel: ViewModel {
         super.init()
     }
     
-    func showEstablishment() {
-        self.delegate.showEstablishment()
+    func showEstablishment(id: Int) {
+        self.delegate.showEstablishment(id: id)
     }
     
     func getEstablishmentCategory(callback: @escaping (Bool, [EstablishmentCategoryResponse]?) -> ()) {
@@ -53,11 +53,11 @@ class EstablishmentsViewModel: ViewModel {
     
     func getNearEstablishments(pageNumber: Int, callback: @escaping (Bool, [EstablishmentResponse]?) -> ()) {
         let location = getUsetLocation()
-//        let lat = location?.coordinate.latitude
-//        let lng = location?.coordinate.longitude
+        let lat = location?.coordinate.latitude
+        let lng = location?.coordinate.longitude
         
-        let lat = -23.6130207
-        let lng = -46.609477
+//        let lat = -23.6130207
+//        let lng = -46.609477
         
         let params = EstablishmentRequest(userLatitude: lat,
                                           userLongitute: lng,

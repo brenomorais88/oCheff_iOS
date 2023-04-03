@@ -85,6 +85,6 @@ extension FavoritosViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.viewModel?.showEstablishment()
+        self.viewModel?.showEstablishment(id: 1)
     }
 }

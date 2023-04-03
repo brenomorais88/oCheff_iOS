@@ -9,8 +9,18 @@ import UIKit
 import MapKit
 
 class EstablishmentDetailViewController: ViewController {
-    @IBOutlet weak var waitListButton: UIButton!
-    @IBOutlet weak var openTableButton: UIButton!
+    @IBOutlet weak var topImage: UIImageView?
+    @IBOutlet weak var name: UILabel?
+    @IBOutlet weak var categories: UILabel?
+    @IBOutlet weak var statusLabel: UILabel?
+    @IBOutlet weak var rattingLabel: UILabel?
+    @IBOutlet weak var distanceLabel: UILabel?
+    @IBOutlet weak var workTime: UILabel?
+    @IBOutlet weak var descriptionLabel: UILabel?
+    @IBOutlet weak var contact: UILabel?
+    @IBOutlet weak var address: UILabel?
+    @IBOutlet weak var waitListButton: UIButton?
+    @IBOutlet weak var openTableButton: UIButton?
     
     let viewModel: EstablishmentDetailViewModel?
     
@@ -34,6 +44,7 @@ class EstablishmentDetailViewController: ViewController {
         self.setupTranslucentNavBar()
         self.setupFavoriteButtom()
         self.setupViews()
+        self.loadEstablishmentDetails()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,9 +57,35 @@ class EstablishmentDetailViewController: ViewController {
    }
     
     private func setupViews() {
-        self.waitListButton.setupSecondaryBtn()
+        self.waitListButton?.setupSecondaryBtn()
     }
     
+    func loadEstablishmentDetails() {
+        self.viewModel?.getEstablishmentsDetail(callback: { success, response in
+            if success, let establishment = response {
+                self.setupEstablishmentData(establishment: establishment)
+                
+            } else {
+                self.showFullScreenError(delegate: self)
+            }
+            self.dismissLoading()
+        })
+    }
+    
+    private func setupEstablishmentData(establishment: EstablishmentResponse) {
+        self.name?.text = establishment.name
+        self.categories?.text = establishment.getCategoriesText()
+        self.address?.text = establishment.getAddressText()
+        
+        //        @IBOutlet weak var topImage: UIImageView?
+        //        @IBOutlet weak var statusLabel: UILabel?
+        //        @IBOutlet weak var rattingLabel: UILabel?
+        //        @IBOutlet weak var distanceLabel: UILabel?
+        //        @IBOutlet weak var workTime: UILabel?
+        //        @IBOutlet weak var descriptionLabel: UILabel?
+        //        @IBOutlet weak var contact: UILabel?
+        
+    }
     //MARK: actions
     
     @IBAction func showMenu(_ sender: Any) {

@@ -12,6 +12,7 @@ protocol EstablishmentServiceProtocol {
     func getEstablishmentCategory(callback: @escaping (Bool, [EstablishmentCategoryResponse]?) -> ())
     func getNearEstablishments(params: EstablishmentRequest, callback: @escaping (Bool, [EstablishmentResponse]?) -> ())
     func getFavoritesEstablishments(callback: (Bool, [EstablishmentResponse]?) -> ())
+    func getEstablishmentsDetail(id: Int, callback: @escaping (Bool, EstablishmentResponse?) -> ())
 }
 
 class EstablishmentService: Service {
@@ -43,13 +44,32 @@ extension EstablishmentService: EstablishmentServiceProtocol {
         }
     }
     
+    func getEstablishmentsDetail(id: Int,
+                                 callback: @escaping (Bool, EstablishmentResponse?) -> ()) {
+        
+        AF.request("\(self.baseURL)/Restaurants/\(id)",
+                   method: .get,
+                   encoding: URLEncoding.httpBody).response { response in
+
+            switch response.result {
+                case .success:
+                do {
+                    let parsedData = try self.decoder.decode(EstablishmentResponse.self,
+                                                             from: response.data ?? Data())
+                    callback(true, parsedData)
+                    
+                } catch {
+                    callback(false, nil)
+                }
+
+                case .failure:
+                    callback(false, nil)
+            }
+        }
+    }
+    
     func getFavoritesEstablishments(callback: (Bool, [EstablishmentResponse]?) -> ()) {
-//        let estList = [
-////            EstablishmentResponse(name: "Black Sushi", distance: "1km", avaliation: "4.8", image: Data()),
-////            EstablishmentResponse(name: "Pizza Hut", distance: "2km", avaliation: "3.8", image: Data())
-//        ]
-//
-//        callback(true, estList)
+        
     }
     
     func getEstablishmentCategory(callback: @escaping (Bool, [EstablishmentCategoryResponse]?) -> ()) {
@@ -68,7 +88,7 @@ extension EstablishmentService: EstablishmentServiceProtocol {
                         callback(false, nil)
                     }
 
-                case let .failure:
+                case .failure:
                     callback(false, nil)
             }
         }

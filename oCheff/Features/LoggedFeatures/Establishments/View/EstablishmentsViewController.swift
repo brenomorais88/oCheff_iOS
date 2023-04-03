@@ -127,7 +127,9 @@ extension EstablishmentsViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.viewModel?.showEstablishment()
+        let establishment = self.establishments[indexPath.row]
+        let id = establishment.id
+        self.viewModel?.showEstablishment(id: id)
     }
 }
 

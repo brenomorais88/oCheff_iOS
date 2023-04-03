@@ -11,7 +11,7 @@ protocol HomeCoordinatorProtocol {
     func openNewTable()
     func showEstablishments()
     func showFavorites()
-    func showEstablishment()
+    func showEstablishment(id: Int)
     func openMenu()
     func openOrders()
     func closeAccount() 
@@ -26,8 +26,8 @@ class HomeCoordinator: Coordinator {
 }
 
 extension HomeCoordinator: HomeCoordinatorProtocol {
-    func showEstablishment() {
-        let viewModel = EstablishmentDetailViewModel(delegate: self)
+    func showEstablishment(id: Int) {
+        let viewModel = EstablishmentDetailViewModel(id: id, delegate: self)
         let vc = EstablishmentDetailViewController(viewModel: viewModel)
         self.navigationController.pushViewController(vc, animated: true)
     }

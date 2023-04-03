@@ -15,8 +15,8 @@ class MenuViewModel: ViewModel {
         super.init()
     }
     
-    func showEstablishment() {
-        self.delegate.showEstablishment()
+    func showEstablishment(id: Int) {
+        self.delegate.showEstablishment(id: id)
     }
     
     func showOrders() {
