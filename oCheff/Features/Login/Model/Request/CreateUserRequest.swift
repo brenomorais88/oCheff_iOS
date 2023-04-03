@@ -51,18 +51,4 @@ struct CreateUserRequest: Encodable {
         case fbKey = "facebookKey"
         case ggKey = "googleKey"
     }
-    
-    
-//    {
-//      "type": 1,
-//      "device": "string",
-//      "name": "string",
-//      "surname": "string",
-//      "phoneNumber": "5511982743434",
-//      "email": "teste@teste.com",
-//      "document": "string",
-//      "photo": "string",
-//      "facebookKey": "string",
-//      "googleKey": "string"
-//    }
 }

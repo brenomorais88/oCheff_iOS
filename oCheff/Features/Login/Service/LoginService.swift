@@ -135,6 +135,6 @@ extension UserService: UserServiceProtocol {
     
     //faz logout
     func logOut(callback: @escaping (Bool) -> ()) {
-        
+        print("Logout")
     }
 }

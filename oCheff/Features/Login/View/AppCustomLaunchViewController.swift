@@ -24,6 +24,7 @@ class AppCustomLaunchViewController: UIViewController {
         super.viewDidLoad()
         self.service = UserService()
         self.checkUser()
+        self.hideKeyboardWhenTappedAround()
     }
 
     private func checkUser() {

@@ -8,8 +8,9 @@
 import UIKit
 
 protocol EstablishmentFilterProtocol {
-    func applyFilter()
+    func applyFilter(filter: EstablishmentFilter)
 }
+
 class EstablishmentFilterViewController: UIViewController {
     @IBOutlet weak var filterContent: UIView?
     
@@ -21,9 +22,11 @@ class EstablishmentFilterViewController: UIViewController {
     
     
     let delegate: EstablishmentFilterProtocol
+    var filter: EstablishmentFilter?
     
-    init(delegate: EstablishmentFilterProtocol) {
+    init(filter: EstablishmentFilter?, delegate: EstablishmentFilterProtocol) {
         self.delegate = delegate
+        self.filter = filter
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -36,6 +39,7 @@ class EstablishmentFilterViewController: UIViewController {
         self.setupBackButton()
         self.title = "Etabelecimentos"
         self.setupViews()
+        self.loadFilter()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,9 +53,43 @@ class EstablishmentFilterViewController: UIViewController {
         self.filterContent?.roundTop(bounds: bounds)
     }
     
+    private func loadFilter() {
+        guard let filter = filter else {
+            return
+        }
+        
+        self.distanceSlider.value = Float(filter.distance ?? 3)
+        self.priceSlider.value = Float(filter.averagePrice ?? 501)
+        setupDistanceFilter()
+        setupValueFilter()
+    }
+    
     //MARK: actions
     
     @IBAction func changeDistance(_ sender: Any) {
+        setupDistanceFilter()
+    }
+    
+    @IBAction func changePrice(_ sender: Any) {
+        setupValueFilter()
+    }
+    
+    @IBAction func applyFilter(_ sender: Any) {
+        let distance: Int? = getSelectedDistance()
+//        let averagePrice: Double? = getSelectedAveragePrice()
+        let averagePrice: Double? = nil
+        
+        filter = EstablishmentFilter(distance: distance,
+                                     averagePrice: averagePrice)
+        
+        if let filter = self.filter {
+            self.delegate.applyFilter(filter: filter)
+        }
+    
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func setupDistanceFilter() {
         let selectedDistance = Int(distanceSlider.value)
         
         if selectedDistance > 10 {
@@ -61,7 +99,7 @@ class EstablishmentFilterViewController: UIViewController {
         }
     }
     
-    @IBAction func changePrice(_ sender: Any) {
+    private func setupValueFilter() {
         let selectedPrice = Int(priceSlider.value)
         
         if selectedPrice > 500 {
@@ -71,8 +109,23 @@ class EstablishmentFilterViewController: UIViewController {
         }
     }
     
-    @IBAction func applyFilter(_ sender: Any) {
-        self.delegate.applyFilter()
-        self.dismiss(animated: true, completion: nil)
+    private func getSelectedDistance() -> Int? {
+        let selectedDistance = Int(distanceSlider.value)
+        
+        if selectedDistance > 10 {
+            return nil
+        } else {
+            return selectedDistance
+        }
+    }
+    
+    private func getSelectedAveragePrice() -> Double? {
+        let selectedPrice = Int(priceSlider.value)
+        
+        if selectedPrice > 500 {
+            return nil
+        } else {
+            return Double(priceSlider.value)
+        }
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol EstablishmentServiceProtocol {
-    func getEstablishmentCategory(callback: (Bool, [EstablishmentCategoryResponse]?) -> ())
+    func getEstablishmentCategory(callback: @escaping (Bool, [EstablishmentCategoryResponse]?) -> ())
     func getNearEstablishments(params: EstablishmentRequest, callback: @escaping (Bool, [EstablishmentResponse]?) -> ())
     func getFavoritesEstablishments(callback: (Bool, [EstablishmentResponse]?) -> ())
 }
@@ -52,32 +52,25 @@ extension EstablishmentService: EstablishmentServiceProtocol {
 //        callback(true, estList)
     }
     
-    func getEstablishmentCategory(callback: (Bool, [EstablishmentCategoryResponse]?) -> ()) {
-//        AF.request("https://httpbin.org/post",
-//                   method: .post,
-//                   parameters: login,
-//                   encoder: JSONParameterEncoder.default).response { response in
-//
-//            switch response.result {
-//                case .success:
-//                    print("Validation Successful")
-//
-//                case let .failure(error):
-//                    self.handleError(error)
-//            }
-//        }
-        
-        let catList = [
-            EstablishmentCategoryResponse(name: "Tudo"),
-            EstablishmentCategoryResponse(name: "Oriental"),
-            EstablishmentCategoryResponse(name: "Italiano"),
-            EstablishmentCategoryResponse(name: "Burguer"),
-            EstablishmentCategoryResponse(name: "Doce"),
-            EstablishmentCategoryResponse(name: "Arabe"),
-            EstablishmentCategoryResponse(name: "Brasileira"),
-            EstablishmentCategoryResponse(name: "Outros")
-        ]
-        
-        callback(true, catList)
+    func getEstablishmentCategory(callback: @escaping (Bool, [EstablishmentCategoryResponse]?) -> ()) {
+        AF.request("\(self.baseURL)/Restaurants/Categories",
+                   method: .get,
+                   encoding: URLEncoding.httpBody).response { response in
+
+            switch response.result {
+                case .success:
+                    do {
+                        let parsedData = try self.decoder.decode([EstablishmentCategoryResponse].self,
+                                                                 from: response.data ?? Data())
+                        callback(true, parsedData)
+                        
+                    } catch {
+                        callback(false, nil)
+                    }
+
+                case let .failure:
+                    callback(false, nil)
+            }
+        }
     }
 }

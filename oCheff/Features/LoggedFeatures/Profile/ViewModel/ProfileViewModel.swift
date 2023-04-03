@@ -35,8 +35,16 @@ class ProfileViewModel: ViewModel {
     }
     
     func deleteUserImage(callback: @escaping (Bool) -> ()) {
+        #warning("corrigir api para enviar uma string vazia quando for deletar a foto")
         let params = UpdateUserImageRequest(image: "empty")
         self.service.updateUserImage(params: params, callback: callback)
     }
     
+    func logOut() {
+        self.service.logOut { success in
+            if success {
+                print("usuario deslogado")
+            }
+        }
+    }
 }

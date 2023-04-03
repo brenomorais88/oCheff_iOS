@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,10 +25,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRp-Z6-9ex">
-                    <rect key="frame" x="0.0" y="94" width="414" height="802"/>
+                    <rect key="frame" x="0.0" y="98" width="414" height="798"/>
                     <subviews>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BL0-T4-exo">
-                            <rect key="frame" x="24" y="698" width="366" height="50"/>
+                            <rect key="frame" x="24" y="694" width="366" height="50"/>
                             <color key="backgroundColor" red="0.027450980390000001" green="0.043137254899999998" blue="0.078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="KNy-my-bSR"/>
@@ -121,7 +122,7 @@
                                             <color key="textColor" red="0.41960784309999999" green="0.44705882349999998" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="250" minValue="100" maxValue="501" translatesAutoresizingMaskIntoConstraints="NO" id="QEm-xT-bXU">
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="501" minValue="100" maxValue="501" translatesAutoresizingMaskIntoConstraints="NO" id="QEm-xT-bXU">
                                             <rect key="frame" x="-2" y="39.5" width="370" height="31"/>
                                             <color key="tintColor" red="0.91764705879999997" green="0.1764705882" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>

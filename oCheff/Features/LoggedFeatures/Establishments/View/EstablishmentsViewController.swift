@@ -56,27 +56,28 @@ class EstablishmentsViewController: ViewController {
     private func loadCategories() {
         self.showLoading()
        
-        self.viewModel?.getEstablishmentCategory(callback: { succsess, response in
-            if succsess {
+        self.viewModel?.getEstablishmentCategory(callback: { success, response in
+            if success {
                 self.categories = response ?? []
                 self.categoriesColection?.reloadData()
                 self.categoriesColection?.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .left)
                 self.loadEstablishments()
             } else {
+                self.dismissLoading()
                 self.showFullScreenError(delegate: self)
             }
         })
     }
     
     private func loadEstablishments() {
-        self.viewModel?.getNearEstablishments(callback: { succsess, response in
-            if succsess {
+        self.viewModel?.getNearEstablishments(pageNumber: 1, callback: { success, response in
+            if success {
                 self.establishments = response ?? []
                 self.establishmentsTV?.reloadData()
-                self.dismissLoading()
             } else {
                 self.showFullScreenError(delegate: self)
             }
+            self.dismissLoading()
         })
     }
     
@@ -98,7 +99,8 @@ class EstablishmentsViewController: ViewController {
     //MARK: actions
     
     @IBAction func showFilter(_ sender: Any) {
-        let vc = EstablishmentFilterViewController(delegate: self)
+        let vc = EstablishmentFilterViewController(filter: self.viewModel?.filter,
+                                                   delegate: self)
         self.present(vc, animated: true, completion: nil)
     }
 }
@@ -154,14 +156,25 @@ extension EstablishmentsViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.establishmentsTV?.reloadData()
+        self.showLoading()
+        let categorie = self.categories[indexPath.row]
+        if categorie.id == -1 {
+            self.viewModel?.selectedCategoryId = nil
+            
+        } else {
+            self.viewModel?.selectedCategoryId = categorie.id
+        }
+        
+        self.loadEstablishments()
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }
 
 
 extension EstablishmentsViewController: EstablishmentFilterProtocol {
-    func applyFilter() {
-        
+    func applyFilter(filter: EstablishmentFilter) {
+//        self.showLoading()
+        self.viewModel?.filter = filter
+        self.loadEstablishments()
     }
 }

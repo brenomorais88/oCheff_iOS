@@ -29,6 +29,7 @@ class LoginPhoneViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupViews()
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {

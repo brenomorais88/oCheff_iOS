@@ -130,7 +130,20 @@ class ProfileViewController: ViewController {
     }
     
     @IBAction func openSuport(_ sender: Any) {
+        let suportNumber = "+5511959191135"
+        let suportText = "Olá, preciso de ajuda com o app oCheff"
+        let urlWhats = "whatsapp://send?phone=\(suportText)&text=\(suportText)"
         
+        if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed) {
+                if let whatsappURL = URL(string: urlString) {
+                    
+                    if UIApplication.shared.canOpenURL(whatsappURL) {
+                        UIApplication.shared.open(whatsappURL)
+                    } else {
+                        print("TRATAR ERRO")
+                    }
+                }
+            }
     }
     
     @IBAction func changePassword(_ sender: Any) {
@@ -138,6 +151,7 @@ class ProfileViewController: ViewController {
     }
     
     @IBAction func logOut(_ sender: Any) {
+        self.viewModel?.logOut()
         Defaults.shared.cleanSessionPhone()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate

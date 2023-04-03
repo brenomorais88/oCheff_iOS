@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleIdentifier</key>
+	<string></string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -22,7 +24,30 @@
 				<string>com.googleusercontent.apps.1000155196220-90iloijtuc7ve9dtado4snkn247b08eh</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.bit2b.ocheff</string>
+			</array>
+		</dict>
 	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>http://webapi.app.br.iron.hostazul.com.br</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+		</dict>
+	</dict>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -48,20 +73,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>http://webapi.app.br.iron.hostazul.com.br</key>
-			<dict>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-				<false/>
-			</dict>
-		</dict>
-	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>whatsapp</string>
+	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need know user location to filter establishments</string>
 </dict>
 </plist>

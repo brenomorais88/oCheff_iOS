@@ -42,6 +42,7 @@ class PhoneValidationViewController: ViewController {
         super.viewDidLoad()
         self.setupViews()
         self.service = UserService()
+        self.hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {

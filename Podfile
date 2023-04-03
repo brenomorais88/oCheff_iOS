@@ -8,6 +8,7 @@ target 'oCheff' do
   pod 'GoogleSignIn'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
+  pod 'SwiftLint'
 
   target 'oCheffTests' do
     inherit! :search_paths
